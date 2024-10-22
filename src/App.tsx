@@ -7,13 +7,18 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Features from "./components/Features";
 import TeamSection12 from "./components/TeamCard";
+import FooterSection from "./components/FooterSection";
+import Pricing from "./components/Pricing";
+import NewsLetter from "./components/NewsLetter";
 function App() {
   return (
     <div>
       {/* <Navbar /> */}
       <Header />
       <Features />
-      <TeamSection12 />
+      <Pricing />
+      <NewsLetter />
+      <FooterSection />
     </div>
   )
 }
