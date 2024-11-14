@@ -83,7 +83,7 @@ export default function SignUp() {
                   className="rounded "
                 />
               </div>
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full hover:bg-blue-gray-300 rounded ">
                 Create an account
               </Button>
             </div>
