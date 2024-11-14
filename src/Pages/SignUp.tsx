@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { ChangeEvent, FormEvent, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 export default function SignUp() {
+    const navigate = useNavigate()
   const [user, setUser] = useState({
     name: "",
     password: "",
@@ -15,6 +16,7 @@ export default function SignUp() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     console.log("user:", user)
+        navigate("/login")
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
