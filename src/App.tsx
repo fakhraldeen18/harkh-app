@@ -1,24 +1,16 @@
 import "./App.css"
-import Header from "./components/HeaderPage"
-import Navbar from "./components/Navbar"
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import Features from "./components/Features";
-import TeamSection12 from "./components/TeamCard";
-import FooterSection from "./components/FooterSection";
-import Pricing from "./components/Pricing";
-import NewsLetter from "./components/NewsLetter";
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import SignUp from "./Pages/SignUp"
+import Home from "./Pages/Home"
 function App() {
   return (
     <div>
-      {/* <Navbar /> */}
-      <Header />
-      <Features />
-      <Pricing />
-      <NewsLetter />
-      <FooterSection />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signUp" element={<SignUp />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
