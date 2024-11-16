@@ -1,33 +1,45 @@
+import { Link, useNavigate } from "react-router-dom"
+import { SubmitHandler, useForm } from "react-hook-form"
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { ChangeEvent, FormEvent, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
 export default function Login() {
-  const navigate = useNavigate()
-  const [login, setLogin] = useState({
-    email: "",
-    password: ""
-  })
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    console.log("login:", login)
-    navigate("/")
+  type SignUpSchemaType = z.infer<typeof SignUpSchema>
+  type LoginType = {
+    email: string
+    password: string
   }
+  const navigate = useNavigate()
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setLogin({
-      ...login,
-      [name]: value
-    })
+  const SignUpSchema = z.object({
+    email: z.string().email(),
+    password: z
+      .string()
+      .min(8, { message: "Password is too short" })
+      .max(20, { message: "Password is too long" })
+  })
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) })
+  console.log(errors.email?.message)
+
+  //we should here call like API or something...
+  const onSubmit: SubmitHandler<SignUpSchemaType> = (data: LoginType) => {
+    console.log(data)
+    navigate("/login")
   }
 
   return (
     <div className=" flex flex-col justify-between">
       <></>
-      <form className="mr-8" onSubmit={handleSubmit}>
+      <form className="mr-8" onSubmit={handleSubmit(onSubmit)}>
         <Card className="mx-auto max-w-sm mt-10 lg:mt-32 ml-10 md:ml-auto rounded">
           <CardHeader>
             <CardTitle className="text-2xl">Login</CardTitle>
@@ -38,26 +50,24 @@ export default function Login() {
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
-                  name="email"
                   id="email"
                   type="email"
+                  {...register("email")}
                   placeholder="m@example.com"
-                  required
-                  onChange={handleChange}
                   className="rounded "
                 />
+                {errors.email && <span className="text-red-600">{errors.email.message}</span>}
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
-                  name="password"
                   id="password"
                   type="password"
+                  {...register("password")}
                   placeholder="Password"
-                  required
-                  onChange={handleChange}
                   className="rounded "
                 />
+                {errors.password && <span className="text-red-600">{errors.password.message}</span>}
               </div>
               <Button type="submit" className="w-full hover:bg-blue-gray-300 rounded">
                 Login
