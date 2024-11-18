@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+
 export default function SignUp() {
   type SignUpSchemaType = z.infer<typeof SignUpSchema>
   type SignUpType = {
