@@ -33,7 +33,7 @@ export default function Login() {
   //we should here call like API or something...
   const onSubmit: SubmitHandler<SignUpSchemaType> = (data: LoginType) => {
     console.log(data)
-    navigate("/login")
+    navigate("/")
   }
 
   return (
