@@ -1,5 +1,5 @@
 import { Search } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from './button';
 
 const SearchInput: React.FC = () =>{
 

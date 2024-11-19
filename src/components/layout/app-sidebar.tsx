@@ -11,10 +11,8 @@ import {
   SquareTerminal,
 } from "lucide-react"
 
-import { NavMain } from "@/components/layout/nav-main"
-import { NavProjects } from "@/components/layout/nav-projects"
-import { NavUser } from "@/components/layout/nav-user"
-// import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain, NavProjects,NavUser } from './Sidebar';
+
 import {
   Sidebar,
   SidebarContent,
@@ -161,7 +159,7 @@ export const company = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="offcanvas" {...props}>
       
       <SidebarHeader>
       <div className="flex gap-2 py-2 text-sidebar-accent-foreground ">
@@ -181,7 +179,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       
       <SidebarFooter>
-        <NavUser user={data.user} />
+    -
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

@@ -1,8 +1,5 @@
-
-"use client";
-
 import { Footer } from "flowbite-react";
-import logo from "../assets/images/Harkh.png";
+import Logo from "@/assets/images/Harkh.png"
 const FooterSection = () => {
     return (
         <Footer container>
@@ -11,7 +8,7 @@ const FooterSection = () => {
             <Footer.Brand
             className="w-[130px] h-[130px]"
               href=""
-              src={logo}
+              src={Logo}
               alt="Harkh Logo"
               name="Harkh"
             />

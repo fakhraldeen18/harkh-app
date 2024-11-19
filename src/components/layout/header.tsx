@@ -2,10 +2,9 @@ import { Separator } from "@/components/ui/separator"
 import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-// import { Breadcrumbs } from "../breadcrumbs"
-import SearchInput from "../search-input"
-import { NavUser } from "./nav-user"
-import { Bell, CalendarDays, MessageCircle, MessageSquare } from "lucide-react"
+import SearchInput from "../ui/search-input"
+import { NavUser } from './Sidebar';
+import { Bell, CalendarDays, MessageCircle } from "lucide-react"
 const Header = () => {
   return (
     <header className="flex h-20 shrink-0 items-center justify-between gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-16">

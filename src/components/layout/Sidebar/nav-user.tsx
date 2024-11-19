@@ -2,7 +2,6 @@ import {
   BadgeCheck,
   Bell,
   ChevronDown,
-  ChevronsUpDown,
   CreditCard,
   LogOut,
   Sparkles,
@@ -29,7 +28,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-export function NavUser({
+export default function NavUser({
   user,
 }: {
   user: {

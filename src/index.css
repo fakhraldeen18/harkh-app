@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* @layer base {
+@layer base {
   :root {
     --background: 20 66% 99%;
     --foreground: 20 51% 4%;
@@ -94,13 +93,8 @@
     height: 100vh; /* Fallback */
     height: 100dvh;
   }
-} */
+}
 
-/* @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-} */
+
+
+

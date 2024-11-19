@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Logo from "../assets/images/Harkh.png"
+import Logo from "@/assets/images/Harkh.png"
 
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false)
