@@ -3,12 +3,18 @@ import {
   BookOpen,
   Bot,
   Command,
+  Dot,
   Frame,
   GalleryVerticalEnd,
+  LayoutGrid,
+  ListTodo,
   Map,
+  MessageCircle,
   PieChart,
   Settings2,
+  SquareCheck,
   SquareTerminal,
+  Users,
 } from "lucide-react"
 
 import { NavMain, NavProjects,NavUser } from './Sidebar';
@@ -20,6 +26,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { SidebarOptInForm } from "./Sidebar/sidebar-opt-in-form";
 
 // This is sample data.
 const data = {
@@ -47,106 +54,51 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
+      title: "Home",
+      url: "/",
+      icon: LayoutGrid,
       isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
+      items: [],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
+      title: "Messages",
+      url: "/messages",
+      icon: MessageCircle,
+      items: [],
     },
     {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
+      title: "Tasks",
+      url: "/tasks",
+      icon: SquareCheck,
+      items: [],
     },
     {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
+      title: "Members",
+      url: "/users",
+      icon: Users,
+      items: [],
     },
   ],
   projects: [
     {
-      name: "Design Engineering",
+      name: "Mobile App",
       url: "#",
-      icon: Frame,
+     
     },
     {
-      name: "Sales & Marketing",
+      name: "Website ReDesign",
       url: "#",
-      icon: PieChart,
+     
     },
     {
-      name: "Travel",
+      name: "Design System",
       url: "#",
-      icon: Map,
+      
+    },
+    {
+      name: "Wireframes",
+      url: "#",
+      
     },
   ],
 }
@@ -162,7 +114,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="offcanvas" {...props}>
       
       <SidebarHeader>
-      <div className="flex gap-2 py-2 text-sidebar-accent-foreground ">
+      <div className="flex gap-2 py-2 text-sidebar-accent-foreground mt-1.5 ">
           <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
             <company.logo className="size-4" />
           </div>
@@ -178,9 +130,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavProjects projects={data.projects} />
       </SidebarContent>
       
+  
       <SidebarFooter>
-    -
+        <div className="p-1">
+          <SidebarOptInForm />
+        </div>
       </SidebarFooter>
+  
       <SidebarRail />
     </Sidebar>
   )

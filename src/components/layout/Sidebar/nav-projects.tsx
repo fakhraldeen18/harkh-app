@@ -1,7 +1,10 @@
 import {
+  CirclePlus,
   Folder,
   Forward,
   MoreHorizontal,
+  Plus,
+  SquarePlus,
   Trash2,
   type LucideIcon,
 } from "lucide-react"
@@ -22,6 +25,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { Button } from "@/components/ui/button"
 
 export default function NavProjects({
   projects,
@@ -29,20 +33,28 @@ export default function NavProjects({
   projects: {
     name: string
     url: string
-    icon: LucideIcon
   }[]
 }) {
   const { isMobile } = useSidebar()
 
   return (
-    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Projects</SidebarGroupLabel>
+    <SidebarGroup >
+      <div>
+      <SidebarGroupLabel className="flex w-full items-center justify-between gap-2">
+        
+         Projects <Button variant="subtle" size="xs"> <Plus/> 
+          </Button> 
+        </SidebarGroupLabel>
+      </div>
+    
+
+      
       <SidebarMenu>
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
-              <a href={item.url}>
-                <item.icon />
+              <a className="gap-4"href={item.url}>
+                <span className="rounded-full w-2 h-2 bg-slate-500"></span>
                 <span>{item.name}</span>
               </a>
             </SidebarMenuButton>
@@ -75,12 +87,7 @@ export default function NavProjects({
             </DropdownMenu>
           </SidebarMenuItem>
         ))}
-        <SidebarMenuItem>
-          <SidebarMenuButton className="text-sidebar-foreground/70">
-            <MoreHorizontal className="text-sidebar-foreground/70" />
-            <span>More</span>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
+      
       </SidebarMenu>
     </SidebarGroup>
   )

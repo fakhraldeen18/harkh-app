@@ -20,7 +20,7 @@ import {Separator} from "./separator"
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
-const SIDEBAR_WIDTH = "19rem"
+const SIDEBAR_WIDTH = "16rem"
 const SIDEBAR_WIDTH_MOBILE = "18rem"
 const SIDEBAR_WIDTH_ICON = "6rem"
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
@@ -357,7 +357,7 @@ const SidebarHeader = React.forwardRef<
     <div
       ref={ref}
       data-sidebar="header"
-      className={cn("flex flex-col gap-2 p-2", className)}
+      className={cn("flex flex-col gap-2 p-2 mb-1", className)}
       {...props}
     />
   )
@@ -403,7 +403,7 @@ const SidebarContent = React.forwardRef<
       ref={ref}
       data-sidebar="content"
       className={cn(
-        "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
+        "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden mt-2",
         className
       )}
       {...props}
@@ -444,6 +444,7 @@ const SidebarGroupLabel = React.forwardRef<
         className
       )}
       {...props}
+
     />
   )
 })
@@ -518,6 +519,7 @@ const sidebarMenuButtonVariants = cva(
     variants: {
       variant: {
         default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+        secondary:"bg-white text-gray-700 focus:ring-0 focus:ring-gray-300 active:bg-gray-300 hover:bg-white",
         outline:
           "bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]",
       },
