@@ -45,8 +45,9 @@ export default function NavUser({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
+            variant="secondary"
               size="lg"
-              className="data-[state=open]:bg-sidebar-accen data-[state=open]:text-sidebar-accent-foreground"
+              className="data-[state=open]:text-sidebar-accent-foreground group"
             >
               <div className="grid flex-1 text-right text-sm leading-tight">
                 <span className="truncate font-semibold">{user.name}</span>
@@ -57,7 +58,7 @@ export default function NavUser({
                 <AvatarFallback className="rounded-lg pb-0.5">CN</AvatarFallback>
               </Avatar>
               
-              <ChevronDown className="-ml-1 size-4" />
+              <ChevronDown className="-ml-1 size-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
