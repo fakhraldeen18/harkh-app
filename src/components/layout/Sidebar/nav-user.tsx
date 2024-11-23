@@ -47,7 +47,7 @@ export default function NavUser({
             <SidebarMenuButton
             variant="secondary"
               size="lg"
-              className="data-[state=open]:text-sidebar-accent-foreground group"
+              className="data-[state=open]:text-sidebar-accent-foreground group bg-sidebar"
             >
               <div className="grid flex-1 text-right text-sm leading-tight">
                 <span className="truncate font-semibold">{user.name}</span>

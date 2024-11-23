@@ -7,7 +7,7 @@ import { NavUser } from './Sidebar';
 import { Bell, CalendarDays, MessageCircle } from "lucide-react"
 const Header = () => {
   return (
-    <header className="flex h-20 shrink-0 items-center justify-between gap-2 transition-[width,height] ease-linear border-b-2 mb-4 ">
+    <header className="sticky top-0 z-10 flex h-20 bg-sidebar items-center justify-between gap-2 transition-[width,height] ease-linear border-b-2 border-gray-100 mb-4 ">
     <div className="flex items-center gap-2 px-4">
       <SidebarTrigger className="-ml-1" />
       <Separator orientation="vertical" className="mr-2 h-4" />
