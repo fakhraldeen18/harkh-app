@@ -40,7 +40,7 @@ export default function NavProjects({
   return (
     <SidebarGroup >
       <div>
-      <SidebarGroupLabel className="flex w-full items-center justify-between gap-2">
+      <SidebarGroupLabel className="flex w-full items-center justify-between">
         
          Projects <Button variant="subtle" size="xs"> <Plus/> 
           </Button> 
