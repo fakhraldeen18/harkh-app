@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
+import { ChangeEvent, FormEvent, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -10,26 +11,36 @@ import { Label } from "@/components/ui/label"
 
 export default function SignUp() {
   type SignUpSchemaType = z.infer<typeof SignUpSchema>
-  type SignUpType = {
-    name: string
-    password: string
-    confirmPassword: string
-    email: string
-    phone: string
-  }
 
   const navigate = useNavigate()
+  const [user, setUser] = useState({
+    name: "",
+    password: "",
+    email: "",
+    phone: ""
+  })
+  const handleSubmitOld = (e: FormEvent) => {
+    e.preventDefault()
+    console.log("user:", user)
+    navigate("/login")
+  }
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setUser({
+      ...user,
+      [name]: value
+    })
+  }
 
   const SignUpSchema = z
     .object({
       name: z.string().min(3).max(30),
       email: z.string().email(),
-      phone: z
-        .string({
-          required_error: "required field",
-          invalid_type_error: "Phone is required"
-        })
-        .min(10),
+      phone: z.string({
+        required_error: "required field",
+        invalid_type_error: "Phone is required"
+      }).min(10),
       password: z
         .string()
         .min(8, { message: "Password is too short" })
@@ -49,9 +60,8 @@ export default function SignUp() {
   console.log(errors.email?.message)
 
   //we should here call like API or something...
-  const onSubmit: SubmitHandler<SignUpSchemaType> = (data: SignUpType) => {
+  const onSubmit: SubmitHandler<SignUpSchemaType> = (data: any) => {
     console.log(data)
-    navigate("/login")
   }
 
   return (
