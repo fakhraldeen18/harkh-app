@@ -1,11 +1,9 @@
 import React from 'react'
 import { BsPeople, BsGear, BsCloud, BsHeadset, BsSpeedometer } from 'react-icons/bs'
 import { FaChartLine, FaCode, FaUserShield, FaInfinity } from 'react-icons/fa'
-import Button from '../common/Button'
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
 
 export default function Pricing() {
   const plans = [
@@ -60,59 +58,60 @@ export default function Pricing() {
 
         <div className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2">
           {plans.map((plan) => (
-            <div
+            <Card
               key={plan.name}
-              className={classNames(
-                plan.highlighted ? 'ring-2 ring-primary-600' : 'ring-1 ring-gray-200',
-                'rounded-3xl p-8 xl:p-10'
+              className={cn(
+                "rounded-3xl border-0",
+                plan.highlighted ? 'ring-2 ring-primary-600' : 'ring-1 ring-gray-200'
               )}
             >
-              <div className="flex flex-col h-full">
-                <div>
-                  <div className="flex items-center justify-between gap-x-4">
-                    <h3 className="text-lg font-semibold leading-8 text-gray-900">
-                      {plan.name}
-                    </h3>
-                    {plan.highlighted && (
-                      <p className="rounded-full bg-primary-600/10 px-2.5 py-1 text-xs font-semibold leading-5 text-primary-600">
-                        Most popular
-                      </p>
-                    )}
-                  </div>
-                  <p className="mt-4 text-sm leading-6 text-gray-600">
-                    {plan.description}
-                  </p>
-                  <p className="mt-6">
-                    <span className="text-4xl font-bold tracking-tight text-gray-900">
-                      {plan.price?.monthly ? `$${plan.price.monthly}` : 'Custom pricing'}
-                    </span>
-                    {plan.price?.monthly && (
-                      <span className="text-sm font-semibold leading-6 text-gray-600">
-                        /month
-                      </span>
-                    )}
-                  </p>
-                  <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600">
-                    {plan.features.map((feature) => (
-                      <li key={feature.text} className="flex gap-x-3 items-center">
-                        <span className="text-primary-600 flex-shrink-0">
-                          {feature.icon}
-                        </span>
-                        {feature.text}
-                      </li>
-                    ))}
-                  </ul>
+              <CardHeader className="p-8 xl:p-10">
+                <div className="flex items-center justify-between gap-x-4">
+                  <CardTitle className="text-lg font-semibold leading-8 text-gray-900">
+                    {plan.name}
+                  </CardTitle>
+                  {plan.highlighted && (
+                    <p className="rounded-full bg-primary-600/10 px-2.5 py-1 text-xs font-semibold leading-5 text-primary-600">
+                      Most popular
+                    </p>
+                  )}
                 </div>
-                <div className="mt-auto pt-8">
+                <CardDescription className="mt-4 text-sm leading-6 text-gray-600">
+                  {plan.description}
+                </CardDescription>
+                <div className="mt-6 flex items-baseline gap-x-1">
+                  <span className="text-4xl font-bold tracking-tight text-gray-900">
+                    {plan.price?.monthly ? `$${plan.price.monthly}` : 'Custom pricing'}
+                  </span>
+                  {plan.price?.monthly && (
+                    <span className="text-sm font-semibold leading-6 text-gray-600">
+                      /month
+                    </span>
+                  )}
+                </div>
+              </CardHeader>
+              <CardContent className="p-8 xl:p-10 pt-0">
+                <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600">
+                  {plan.features.map((feature) => (
+                    <li key={feature.text} className="flex gap-x-3 items-center">
+                      <span className="text-primary-600 flex-shrink-0">
+                        {feature.icon}
+                      </span>
+                      {feature.text}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8">
                   <Button
-                    href="#"
-                    variant={plan.highlighted ? 'gradient' : 'primary'}
+                    className="w-full"
+                    variant={plan.highlighted ? "default" : "outline"}
+                    size="lg"
                   >
                     {plan.highlighted ? 'Get started' : 'Contact us'}
                   </Button>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
