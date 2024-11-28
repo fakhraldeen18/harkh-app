@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Logo from "@/assets/images/Harkh.png"
+// import Logo from "@/assets/images/Harkh.png"
 import { Button } from "@/components/ui/button"
 
 const Navbar = () => {
@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-12">
           <div className="flex-shrink-0">
             <a href="/" title="Harkh Home" className="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">
-              <img className="w-[100px] h-auto" src={Logo} alt="Harkh Logo" />
+              {/* <img className="w-[100px] h-auto" src={Logo} alt="Harkh Logo" /> */}
             </a>
           </div>
 
