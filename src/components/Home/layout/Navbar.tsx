@@ -1,159 +1,95 @@
-import React, { useState } from "react"
-import Logo from "@/assets/images/Harkh.png"
+import React, { useState, useEffect } from "react"
+// import Logo from "@/assets/images/Harkh.png"
+import { Button } from "@/components/ui/button"
 
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const navItems = [
+    { name: "Home", href: "/" },
+    { name: "Features", href: "#features" },
+    { name: "Pricing", href: "#pricing" },
+  ]
 
   return (
-    <header className="py-4 md:py-2">
+    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background shadow-md py-1" : "bg-transparent py-2"}`}>
       <div className="container px-4 mx-auto sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-12">
           <div className="flex-shrink-0">
-            <a
-              href="/"
-              title=""
-              className="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
-            >
-              <img className="w-[9vw] h-[9vw]" src={Logo} alt="Logo" />
+            <a href="/" title="Harkh Home" className="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">
+              {/* <img className="w-[100px] h-auto" src={Logo} alt="Harkh Logo" /> */}
             </a>
           </div>
 
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex lg:items-center lg:space-x-8">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              >
+                {item.name}
+              </a>
+            ))}
+            <div className="flex items-center space-x-3">
+              <Button variant="outline" size="sm">Sign In</Button>
+              <Button variant="default" size="sm">Create Account</Button>
+            </div>
+          </nav>
+
+          {/* Mobile menu button */}
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="text-gray-900"
+              className="inline-flex items-center justify-center rounded-full p-2 text-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
               onClick={() => setExpanded(!expanded)}
-              aria-expanded={expanded}
             >
-              {!expanded ? (
-                <svg
-                  className="w-7 h-7"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+              <span className="sr-only">Open main menu</span>
+              {expanded ? (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg
-                  className="w-7 h-7"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
               )}
             </button>
           </div>
+        </div>
+      </div>
 
-          <div className="hidden lg:flex lg:ml-16 lg:items-center lg:justify-center lg:space-x-10 xl:space-x-16">
-            <a
-              href="/features"
-              title=""
-              className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
-            >
-              Features
-            </a>
-
-            <a
-              href="#"
-              title=""
-              className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
-            >
-              Pricing
-            </a>
-
-            <a
-              href="#"
-              title=""
-              className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
-            >
-              Use cases
-            </a>
-          </div>
-
-          <div className="hidden lg:ml-auto lg:flex lg:items-center lg:space-x-10">
-            <a
-              href="/login"
-              title=""
-              className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
-            >
-              Login
-            </a>
-
-            <a
-              href="/SignUp"
-              title="Sign up"
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-bold leading-7 text-white transition-all duration-200 bg-gray-900 border border-transparent rounded-xl hover:bg-gray-600 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-              role="button"
-            >
-              Sign up
-            </a>
+      {/* Mobile menu */}
+      {expanded && (
+        <div className="lg:hidden">
+          <div className="space-y-1 px-4 pb-3 pt-2 bg-background">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="block rounded-full px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+                onClick={() => setExpanded(false)}
+              >
+                {item.name}
+              </a>
+            ))}
+            <div className="flex flex-col space-y-2 mt-4 px-3">
+              <Button variant="outline" size="sm">Sign In</Button>
+              <Button variant="default" size="sm">Create Account</Button>
+            </div>
           </div>
         </div>
-
-        {expanded && (
-          <nav>
-            <div className="px-1 py-8">
-              <div className="grid gap-y-7">
-                <a
-                  href="#"
-                  title="Features"
-                  className="flex items-center p-3 -m-3 text-base font-medium text-gray-900 transition-all duration-200 rounded-xl hover:bg-gray-50 focus:outline-none font-pj focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
-                >
-                  Features
-                </a>
-
-                <a
-                  href="#"
-                  title="Pricing"
-                  className="flex items-center p-3 -m-3 text-base font-medium text-gray-900 transition-all duration-200 rounded-xl hover:bg-gray-50 focus:outline-none font-pj focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
-                >
-                  Pricing
-                </a>
-
-                <a
-                  href="#"
-                  title="Automation"
-                  className="flex items-center p-3 -m-3 text-base font-medium text-gray-900 transition-all duration-200 rounded-xl hover:bg-gray-50 focus:outline-none font-pj focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
-                >
-                  Automation
-                </a>
-
-                <a
-                  href="#"
-                  title="Customer Login"
-                  className="flex items-center p-3 -m-3 text-base font-medium text-gray-900 transition-all duration-200 rounded-xl hover:bg-gray-50 focus:outline-none font-pj focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
-                >
-                  Customer Login
-                </a>
-
-                <a
-                  href="#"
-                  title="Sign up"
-                  className="inline-flex items-center justify-center px-6 py-3 text-base font-bold leading-7 text-white transition-all duration-200 bg-gray-900 border border-transparent rounded-xl hover:bg-gray-600 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-                  role="button"
-                >
-                  Sign up
-                </a>
-              </div>
-            </div>
-          </nav>
-        )}
-      </div>
+      )}
     </header>
   )
 }
