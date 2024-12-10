@@ -1,9 +1,12 @@
-import React, { useState } from "react"
-import Logo from "@/assets/images/Harkh.png"
+"use client";
+
+import React, { useState } from "react";
+
+// import Logo from "/assets/images/Harkh.png";
 
 const Navbar = () => {
-  const [expanded, setExpanded] = useState(false)
-
+  const [expanded, setExpanded] = useState(false);
+  const logoUrl = "/assets/images/Harkh.png";
   return (
     <header className="py-4 md:py-2">
       <div className="container px-4 mx-auto sm:px-6 lg:px-8">
@@ -14,7 +17,7 @@ const Navbar = () => {
               title=""
               className="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
             >
-              <img className="w-[9vw] h-[9vw]" src={Logo} alt="Logo" />
+              <img className="w-[9vw] h-[9vw]" src={logoUrl} alt="Logo" />
             </a>
           </div>
 
@@ -155,7 +158,7 @@ const Navbar = () => {
         )}
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
