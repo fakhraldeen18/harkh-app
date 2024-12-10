@@ -1,30 +1,47 @@
-// // import { Footer } from "flowbite-react";
-// // import Logo from "@/assets/images/Harkh.png"
-// const FooterSection = () => {
-//     const logoUrl = "/assets/images/Harkh.png";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
 
-//     return (
-//       <Footer container>
-//         <div className="w-full text-center">
-//           <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
-//             <Footer.Brand
-//               className="w-[130px] h-[130px]"
-//               href=""
-//               src={logoUrl}
-//               alt="Harkh Logo"
-//               name="Harkh"
-//             />
-//             <Footer.LinkGroup>
-//               <Footer.Link href="#">About</Footer.Link>
-//               <Footer.Link href="#">Privacy Policy</Footer.Link>
-//               <Footer.Link href="#">Licensing</Footer.Link>
-//               <Footer.Link href="#">Contact</Footer.Link>
-//             </Footer.LinkGroup>
-//           </div>
-//           <Footer.Divider />
-//           <Footer.Copyright href="#" by="Harkh" year={2024} />
-//         </div>
-//       </Footer>
-//     );
-// }
-// export default FooterSection
+interface FooterProps {
+  logoUrl: string;
+}
+
+export function Footer({ logoUrl }: FooterProps) {
+  return (
+    <footer className="border-t">
+      <div className="container px-4 py-8 mx-auto">
+        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <div className="flex items-center space-x-4">
+            <Image
+              src={logoUrl}
+              alt="Harkh Logo"
+              width={130}
+              height={130}
+              className="w-[130px] h-[130px]"
+            />
+            <span className="text-2xl font-bold">Harkh</span>
+          </div>
+          <nav className="flex gap-4 flex-wrap">
+            <Button variant="link" asChild>
+              <Link href="#">About</Link>
+            </Button>
+            <Button variant="link" asChild>
+              <Link href="#">Privacy Policy</Link>
+            </Button>
+            <Button variant="link" asChild>
+              <Link href="#">Licensing</Link>
+            </Button>
+            <Button variant="link" asChild>
+              <Link href="#">Contact</Link>
+            </Button>
+          </nav>
+        </div>
+        <div className="mt-8 border-t pt-4">
+          <p className="text-center text-sm text-muted-foreground">
+            © 2024 Harkh. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
