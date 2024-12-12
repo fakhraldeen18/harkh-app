@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 
+import Link from "next/link";
+
 // import Logo from "/assets/images/Harkh.png";
 
 const Navbar = () => {
@@ -12,13 +14,13 @@ const Navbar = () => {
       <div className="container px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex-shrink-0">
-            <a
+            <Link
               href="/"
               title=""
               className="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
             >
               <img className="w-[9vw] h-[9vw]" src={logoUrl} alt="Logo" />
-            </a>
+            </Link>
           </div>
 
           <div className="flex lg:hidden">
@@ -63,48 +65,48 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex lg:ml-16 lg:items-center lg:justify-center lg:space-x-10 xl:space-x-16">
-            <a
+            <Link
               href="/features"
               title=""
               className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
             >
               Features
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="#"
               title=""
               className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
             >
               Pricing
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="#"
               title=""
               className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
             >
               Use cases
-            </a>
+            </Link>
           </div>
 
           <div className="hidden lg:ml-auto lg:flex lg:items-center lg:space-x-10">
-            <a
+            <Link
               href="/login"
               title=""
               className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
             >
               Login
-            </a>
+            </Link>
 
-            <a
-              href="/SignUp"
+            <Link
+              href="/signup"
               title="Sign up"
               className="inline-flex items-center justify-center px-6 py-3 text-base font-bold leading-7 text-white transition-all duration-200 bg-gray-900 border border-transparent rounded-xl hover:bg-gray-600 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
               role="button"
             >
               Sign up
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -112,46 +114,46 @@ const Navbar = () => {
           <nav>
             <div className="px-1 py-8">
               <div className="grid gap-y-7">
-                <a
+                <Link
                   href="#"
                   title="Features"
                   className="flex items-center p-3 -m-3 text-base font-medium text-gray-900 transition-all duration-200 rounded-xl hover:bg-gray-50 focus:outline-none font-pj focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
                 >
                   Features
-                </a>
+                </Link>
 
-                <a
+                <Link
                   href="#"
                   title="Pricing"
                   className="flex items-center p-3 -m-3 text-base font-medium text-gray-900 transition-all duration-200 rounded-xl hover:bg-gray-50 focus:outline-none font-pj focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
                 >
                   Pricing
-                </a>
+                </Link>
 
-                <a
+                <Link
                   href="#"
                   title="Automation"
                   className="flex items-center p-3 -m-3 text-base font-medium text-gray-900 transition-all duration-200 rounded-xl hover:bg-gray-50 focus:outline-none font-pj focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
                 >
                   Automation
-                </a>
+                </Link>
 
-                <a
+                <Link
                   href="#"
                   title="Customer Login"
                   className="flex items-center p-3 -m-3 text-base font-medium text-gray-900 transition-all duration-200 rounded-xl hover:bg-gray-50 focus:outline-none font-pj focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
                 >
                   Customer Login
-                </a>
+                </Link>
 
-                <a
+                <Link
                   href="#"
                   title="Sign up"
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-bold leading-7 text-white transition-all duration-200 bg-gray-900 border border-transparent rounded-xl hover:bg-gray-600 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                   role="button"
                 >
                   Sign up
-                </a>
+                </Link>
               </div>
             </div>
           </nav>
