@@ -15,24 +15,27 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
-export function LoginForm() {
-  const [showPassword, setShowPassword] = useState(false)
-  const [login, setLogin] = useState({
-    email: '',
-    password: '',
-  })
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { loginSchema, type LoginInput } from "@/lib/validations/auth"
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    console.log('login:', login)
-  }
+export function LoginForm() {
+  const form = useForm<LoginInput>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  })
+  const [showPassword, setShowPassword] = useState(false)
+
+  const handleSubmit = form.handleSubmit((data: LoginInput) => {
+    console.log('login:', data)
+  })
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setLogin({
-      ...login,
-      [name]: value,
-    })
+    form.setValue(name, value)
   }
 
   return (
@@ -40,7 +43,7 @@ export function LoginForm() {
       <Card className="mx-auto max-w-md border-0 bg-white/10 backdrop-blur-xl shadow-2xl">
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-6">
-            <img src="/assets/images/Harkh.png" alt="HRAKH Logo" className="h-10 invert" />
+            <img src="/assets/images/logo.png" alt="HRAKH Logo" className="h-18" />
           </div>
           <CardTitle className="text-3xl font-bold text-center bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
             Welcome Back
@@ -55,7 +58,7 @@ export function LoginForm() {
               Email
             </Label>
             <Input
-              name="email"
+              {...form.register('email')}
               id="email"
               type="email"
               placeholder="m@example.com"
@@ -70,7 +73,7 @@ export function LoginForm() {
             </Label>
             <div className="relative">
               <Input
-                name="password"
+                {...form.register('password')}
                 id="password"
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Enter your password"
@@ -117,4 +120,3 @@ export function LoginForm() {
     </form>
   )
 }
-
