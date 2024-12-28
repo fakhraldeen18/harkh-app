@@ -1,9 +1,12 @@
 "use client";
 
 import { Bell, Search } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import NotificationsBell from "./nitification-bell";
+import UserDropdown from "./user-dropdown";
 import { motion } from "framer-motion";
 
 export function DashboardNavBar() {
@@ -22,19 +25,10 @@ export function DashboardNavBar() {
         </div>
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon" className="relative">
-            <Bell className="h-5 w-5 text-muted-foreground" />
-            <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500" />
+            <NotificationsBell />
           </Button>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="h-9 w-9 rounded-full overflow-hidden"
-          >
-            <img
-              src="/placeholder.svg?height=36&width=36"
-              alt="Profile picture"
-              className="h-full w-full object-cover"
-            />
-          </motion.div>
+          <UserDropdown />
+         
         </div>
       </motion.div>
     </div>
