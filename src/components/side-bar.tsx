@@ -15,8 +15,6 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
@@ -25,17 +23,10 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar";
 
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-
-const navItems = [
-  { icon: Home, label: "Home", href: "/", isActive: true },
-  { icon: User, label: "Profile", href: "/profile" },
-  { icon: KanbanSquare, label: "Kanban", href: "/kanban" },
-  { icon: List, label: "List", href: "/list" },
-  { icon: FolderGit2, label: "Project", href: "/project" },
-  { icon: Settings, label: "Setting", href: "/settings" },
-];
+import { usePathname } from "next/navigation";
 
 const recentProjects = [
   { name: "Mobile App", color: "bg-green-500" },
@@ -44,9 +35,27 @@ const recentProjects = [
 ];
 
 export function DashboardSideBar() {
+    const pathname = usePathname();
+
+    const navItems = [
+      { icon: Home, label: "Home", href: "/home" },
+      { icon: User, label: "Profile", href: "/profile" },
+      { icon: KanbanSquare, label: "Kanban", href: "/kanban" },
+      { icon: List, label: "List", href: "/list" },
+      { icon: FolderGit2, label: "Project", href: "/project" },
+      { icon: Settings, label: "Setting", href: "/settings" },
+    ].map((item) => ({
+      ...item,
+      isActive: pathname === item.href,
+    }));
+
   return (
-    <SidebarProvider className="w-fit">
-      <Sidebar className="fixed inset-y-0 left-0 z-10 flex h-full w-14 flex-col border-r bg-background sm:w-64" collapsible="icon">
+    <SidebarProvider className="w-fit ">
+      <Sidebar
+        variant="floating"
+        className="fixed inset-y-0 left-0 z-10 flex h-full w-14 flex-col  bg-background sm:w-64"
+        collapsible="icon"
+      >
         <SidebarHeader className="flex h-16 shrink-0 items-center border-b px-4 sm:px-6">
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
@@ -75,16 +84,17 @@ export function DashboardSideBar() {
                     asChild
                     isActive={item.isActive}
                     className={cn(
-                      "flex items-center gap-4 rounded-md px-3 py-2 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground",
-                      item.isActive && "bg-accent text-accent-foreground"
+                      "flex items-center gap-4 rounded-md px-3 py-7 text-muted-foreground transition-colors hover:bg-blue-50 hover:text-accent-foreground",
+                      item.isActive &&
+                        "data-[active=true]:bg-[#D6E4F0] data-[active=true]:text-blue-800 data-[active=true]:font-bold"
                     )}
                   >
-                    <a href={item.href} className="flex items-center gap-4">
+                    <Link href={item.href} className="flex items-center gap-4">
                       <item.icon className="h-5 w-5" />
                       <span className="hidden text-sm font-medium sm:block">
                         {item.label}
                       </span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               </motion.div>
@@ -108,14 +118,14 @@ export function DashboardSideBar() {
                       asChild
                       className="flex items-center gap-4 rounded-md px-3 py-2 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                     >
-                      <a href="#" className="flex items-center gap-4">
+                      <Link href="#" className="flex items-center gap-4">
                         <div
                           className={cn("h-2 w-2 rounded-full", project.color)}
                         />
                         <span className="hidden text-sm font-medium sm:block">
                           {project.name}
                         </span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 </motion.div>
