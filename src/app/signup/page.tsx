@@ -1,4 +1,4 @@
-import { SignUpForm } from "@/components/signup-form";
+import  SignUpForm  from "@/components/signup-form";
 import { WaveBackground } from "@/components/wave-background";
 
 // import { ChangeEvent, FormEvent, useState } from "react";
@@ -68,12 +68,8 @@ export default function Signup() {
   // };
 
   return (
-      <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-      <WaveBackground />
-      <div className="relative">
-        <div className="absolute inset-0 bg-blue-500 blur-3xl opacity-20 -z-10" />
-        <SignUpForm />
-      </div>
+    <div className="">
+      <SignUpForm />
     </div>
   );
 }
