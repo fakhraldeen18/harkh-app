@@ -2,6 +2,7 @@ import { ProjectsList } from '@/components/project-list';
 import React from 'react'
 import { TasksList } from '@/components/tasks-list';
 import { TasksStatus } from '@/components/task-status';
+import { UpcomingEvents } from '@/components/upcoming-events';
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
           <ProjectsList />
         </div>
         <div className="space-y-6">
-          
+          <UpcomingEvents />
         </div>
       </div>
     </div>
