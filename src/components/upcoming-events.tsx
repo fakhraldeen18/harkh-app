@@ -39,7 +39,7 @@ export function UpcomingEvents() {
     <div className="bg-white border rounded-lg p-6">
       <h2 className="text-xl font-semibold text-gray-900">Calender</h2>
       <EventsCalender />
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-16">
         <h2 className="text-xl font-semibold text-gray-900">Upcoming</h2>
         <a href="#" className="text-sm text-blue-600 hover:text-blue-700">
           View All
