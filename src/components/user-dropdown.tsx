@@ -10,6 +10,8 @@ import {
 import { Button } from "./ui/button";
 import React from "react";
 import { motion } from "framer-motion";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 export default function UserDropdown() {
   return (
     <motion.div
@@ -19,15 +21,14 @@ export default function UserDropdown() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon" className="rounded-full">
-            <img
-              src="/assets/images/logo.png"
-              width="36"
-              height="36"
-              className="rounded-full"
-              alt="Avatar"
-              style={{ aspectRatio: "36/36", objectFit: "cover" }}
-            />
-            <span className="sr-only">Toggle user menu</span>
+            <Avatar>
+              <AvatarImage
+                src="/assets/images/personal-image.jpg"
+                alt="user-image"
+                className="object-cover"
+              />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

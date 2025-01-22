@@ -5,10 +5,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
 export default function NotificationsBell() {
   return (
     <DropdownMenu>
@@ -68,8 +66,7 @@ export default function NotificationsBell() {
     </DropdownMenu>
   );
 }
-
-function BellIcon(props) {
+function BellIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -88,8 +85,7 @@ function BellIcon(props) {
     </svg>
   );
 }
-
-function CalendarCheck2Icon(props) {
+function CalendarCheck2Icon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -111,8 +107,7 @@ function CalendarCheck2Icon(props) {
     </svg>
   );
 }
-
-function CalendarIcon(props) {
+function CalendarIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -133,8 +128,7 @@ function CalendarIcon(props) {
     </svg>
   );
 }
-
-function InboxIcon(props) {
+function InboxIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

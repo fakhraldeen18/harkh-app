@@ -36,14 +36,14 @@ export function DashboardSideBar() {
     { icon: User, label: "Profile", href: "/profile" },
     { icon: KanbanSquare, label: "Kanban", href: "/kanban" },
     { icon: List, label: "List", href: "/list" },
-    { icon: FolderGit2, label: "Project", href: "/project" },
+    { icon: FolderGit2, label: "Projects", href: "/projects" },
     { icon: Settings, label: "Setting", href: "/settings" },
   ].map((item) => ({
     ...item,
     isActive: pathname === item.href,
   }));
   return (
-    <SidebarProvider className="w-fit ">
+    <SidebarProvider className="w-fit">
       <Sidebar
         variant="floating"
         className="fixed inset-y-0 left-0 z-10 flex h-full w-14 flex-col  bg-background sm:w-64"
