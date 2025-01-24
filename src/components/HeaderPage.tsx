@@ -1,6 +1,8 @@
+import React from "react";
 const HeaderPage = () => {
   return (
     <div className="overflow-x-hidden bg-gray-50">
+      <h1>Test</h1>
       <section className="pt-12 bg-gray-50 sm:pt-16 mb-[150px]">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
