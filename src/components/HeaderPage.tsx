@@ -1,24 +1,5 @@
-import React from "react"
-import api from "@/api"
-import { useQuery } from "@tanstack/react-query"
+import React from "react";
 const HeaderPage = () => {
-
-    const getProducts = async () => {
-      try {
-        const res = await api.get(`/experiences`)
-        return res.data
-      } catch (error) {
-        return Promise.reject(new Error("Something went wrong"))
-      }
-    }
-
-    // Queries
-    const { data: products, error } = useQuery({
-      queryKey: ["productNoneJoin"],
-      queryFn: getProducts
-    })
-    console.log("products:", products)
-
   return (
     <div className="overflow-x-hidden bg-gray-50">
       <h1>Test</h1>
