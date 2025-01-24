@@ -121,7 +121,7 @@ const FileAttachment = () => {
         {files.slice(0, windowWidth).map((file) => (
           <div
             key={file.fileId}
-            className="flex items-center justify-between max-sm:flex-col border-b transition-colors hover:bg-muted/50"
+            className="flex items-center justify-between max-sm:flex-col border-b border-borderColor transition-colors hover:bg-muted/50"
           >
             <div className="flex w-2/4 max-sm:w-full">
               <Image
@@ -173,7 +173,7 @@ const FileAttachment = () => {
               <motion.div
                 variants={filesWindowChild}
                 key={file.fileId}
-                className="flex items-center justify-between max-sm:flex-col border-b transition-colors hover:bg-muted/50"
+                className="flex items-center justify-between max-sm:flex-col border-b border-borderColor transition-colors hover:bg-muted/50"
               >
                 <div className="flex w-2/4 max-sm:w-full">
                   <Image

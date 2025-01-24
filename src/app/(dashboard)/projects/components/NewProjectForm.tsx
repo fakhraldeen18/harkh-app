@@ -68,29 +68,29 @@ const NewProjectForm = ({ setShowNewProjectForm }) => {
     }
   };
   return (
-    <div className="flex justify-center items-center fixed bg-black/50 size-full left-2/4 -translate-x-2/4 top-2/4 -translate-y-2/4 z-50 overflow-hidden">
+    <div className="max-sm:p-4 flex justify-center items-center fixed bg-black/50 size-full left-2/4 -translate-x-2/4 top-2/4 -translate-y-2/4 z-50 overflow-hidden">
       {!Object.keys(DataOfNewProject).length ? (
-        <Card className="w-2/5 py-8 flex flex-col items-center justify-center gap-5">
+        <Card className="w-2/5 max-lg:w-2/4 max-md:w-3/4 max-sm:w-full py-8 flex flex-col items-center justify-center gap-5">
           <CardHeader className="p-0 m-0 w-full">
             <div className="flex items-center justify-center w-2/12 m-auto relative">
-              <p className="size-4 border-[#0F76DB] border-2 rounded-full"></p>
-              <span className="flex-1 h-[2px] bg-[#0F76DB]"></span>
-              <p className="size-4 border-[#0F76DB] border-2 rounded-full"></p>
+              <p className="size-4 border-secondary border-2 rounded-full"></p>
+              <span className="flex-1 h-[2px] bg-secondary"></span>
+              <p className="size-4 border-secondary border-2 rounded-full"></p>
               <span
                 className={cn(
-                  "size-4 border-[#0F76DB] border-4 rounded-full absolute left-0 duration-1000 bg-white",
+                  "size-4 border-secondary border-4 rounded-full absolute left-0 duration-1000 bg-white",
                   fileInputDisplayed && "left-full -translate-x-full"
                 )}
               ></span>
             </div>
-            <CardTitle className="text-sm text-center text-[#0F76DB]">
+            <CardTitle className="text-sm text-center text-secondary">
               Create New Project
             </CardTitle>
           </CardHeader>
           <form ref={FormElement} className="w-full">
             <div
               className={cn(
-                "flex justify-center items-center flex-col gap-4 w-full h-56",
+                "flex justify-center items-center flex-col gap-4 w-full h-56 max-sm:h-72",
                 fileInputDisplayed && "hidden"
               )}
             >
@@ -105,7 +105,7 @@ const NewProjectForm = ({ setShowNewProjectForm }) => {
                   name="projectName"
                   id="project-name"
                   type="text"
-                  className="focus:border-[#0F76DB] border focus-visible:ring-0 focus-visible:ring-transparent bg-[#F6F9FF]"
+                  className="focus:border-secondary border bg-input"
                   onClick={(e) =>
                     e.currentTarget.classList.remove("border-red-400")
                   }
@@ -123,14 +123,14 @@ const NewProjectForm = ({ setShowNewProjectForm }) => {
                   name="projectDescription"
                   id="project-description"
                   type="text"
-                  className="focus:border-[#0F76DB] border focus-visible:ring-0 focus-visible:ring-transparent bg-[#F6F9FF]"
+                  className="focus:border-secondary border bg-input"
                   onClick={(e) =>
                     e.currentTarget.classList.remove("border-red-400")
                   }
                   placeholder="Project Description"
                 />
               </div>
-              <div className="capitalize w-full max-w-sm flex justify-between items-center gap-4">
+              <div className="capitalize w-full max-w-sm flex justify-between items-center gap-4 max-sm:flex-col">
                 <span className="flex flex-col gap-1.5 w-full">
                   <Label
                     className="text-[#667085] text-ellipsis cursor-pointer"
@@ -141,9 +141,8 @@ const NewProjectForm = ({ setShowNewProjectForm }) => {
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button
-                        variant={"outline"}
                         className={cn(
-                          "w-full justify-start text-left font-normal border rounded-md bg-[#F6F9FF] hover:bg-[#F6F9FF] hover:text-muted-foreground",
+                          "w-full justify-start text-left font-normal border border-borderColor rounded-md bg-input text-input-foreground hover:text-muted-foreground",
                           !DateObject.startDate && "text-muted-foreground"
                         )}
                         id="start-date"
@@ -181,9 +180,8 @@ const NewProjectForm = ({ setShowNewProjectForm }) => {
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button
-                        variant={"outline"}
                         className={cn(
-                          "w-full justify-start text-left font-normal border rounded-md bg-[#F6F9FF] hover:bg-[#F6F9FF] hover:text-muted-foreground",
+                          "w-full justify-start text-left font-normal border border-borderColor rounded-md bg-input text-input-foreground hover:text-muted-foreground",
                           !DateObject.endDate && "text-muted-foreground"
                         )}
                         id="end-date"
@@ -222,7 +220,7 @@ const NewProjectForm = ({ setShowNewProjectForm }) => {
               <div className="w-full space-y-2">
                 <Label
                   htmlFor="upload"
-                  className="cursor-pointer capitalize rounded-sm p-2 flex gap-2 items-center w-full h-10 border-[#CCCCCC] border bg-[#F6F9FF] text-[#9299AC]"
+                  className="cursor-pointer capitalize rounded-sm p-2 flex gap-2 items-center w-full h-10 border border-borderColor bg-input text-[#9299AC]"
                 >
                   <Upload
                     size={15}
@@ -242,21 +240,21 @@ const NewProjectForm = ({ setShowNewProjectForm }) => {
                 />
               </div>
               <div className="size-full overflow-y-auto space-y-3">
-                <div className="rounded-md border-[#667085] border w-full h-10 px-4 flex justify-between items-center">
+                <div className="rounded-md border border-borderColor w-full h-10 px-4 flex justify-between items-center">
                   <p className="flex items-center gap-2">
                     <FileCheck2 size={15} />
                     <span>file.txt</span>
                   </p>
                   <X size={15} className="cursor-pointer" />
                 </div>
-                <div className="rounded-md border-[#667085] border w-full h-10 px-4 flex justify-between items-center">
+                <div className="rounded-md border border-borderColor w-full h-10 px-4 flex justify-between items-center">
                   <p className="flex items-center gap-2">
                     <FileCheck2 size={15} />
                     <span>file.txt</span>
                   </p>
                   <X size={15} className="cursor-pointer" />
                 </div>
-                <div className="rounded-md border-[#667085] border w-full h-10 px-4 flex justify-between items-center">
+                <div className="rounded-md border border-borderColor w-full h-10 px-4 flex justify-between items-center">
                   <p className="flex items-center gap-2">
                     <FileCheck2 size={15} />
                     <span>file.txt</span>
@@ -266,17 +264,18 @@ const NewProjectForm = ({ setShowNewProjectForm }) => {
               </div>
             </div>
           </form>
-          <div className="w-full max-w-sm flex justify-between items-center gap-4">
+          <div className="w-full max-w-sm flex justify-between items-center gap-4 max-md:flex-col">
             <Button
+              variant={"secondary"}
               onClick={(e) => nextAndContinueButton(e)}
-              className="w-full capitalize rounded-sm bg-[#0F76DB] hover:bg-[#0F76DB]"
+              className="w-full capitalize rounded-sm"
             >
               {fileInputDisplayed ? "continue" : "next"}
             </Button>
             <Button
               onClick={(e) => cancelAndPreviousButton(e)}
               variant={"outline"}
-              className="w-full capitalize rounded-sm border-[#0F76DB]"
+              className="w-full capitalize rounded-sm"
             >
               {fileInputDisplayed ? "previous" : "Cancel"}
             </Button>
@@ -290,8 +289,9 @@ const NewProjectForm = ({ setShowNewProjectForm }) => {
             <CardDescription>The Project has been added</CardDescription>
           </CardContent>
           <Button
+            variant={"secondary"}
             onClick={cancelAndPreviousButton}
-            className="w-2/4 capitalize rounded-sm bg-[#0F76DB] hover:bg-[#0F76DB]"
+            className="w-2/4 capitalize rounded-sm"
           >
             Continue
           </Button>

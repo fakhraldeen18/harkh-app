@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 export function Footer() {
   return (
-    <footer className="border-t">
+    <footer className="border-t border-borderColor">
       <div className="container px-4 py-8 mx-auto">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="flex items-center space-x-4">
@@ -31,7 +31,7 @@ export function Footer() {
             </Button>
           </nav>
         </div>
-        <div className="mt-8 border-t pt-4">
+        <div className="mt-8 border-t border-borderColor pt-4">
           <p className="text-center text-sm text-muted-foreground">
             © 2024 Harkh. All rights reserved.
           </p>

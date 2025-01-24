@@ -52,10 +52,12 @@ export default function Pricing() {
             <div
               key={idx}
               className={`relative flex-1 flex items-stretch flex-col mt-6 sm:mt-0 sm:rounded-xl sm:max-w-md ${
-                item.isMostPop ? "bg-white shadow-lg sm:border" : ""
+                item.isMostPop
+                  ? "bg-white shadow-lg sm:border border-borderColor"
+                  : ""
               }`}
             >
-              <div className="p-4 py-8 space-y-4 border-b md:p-8">
+              <div className="p-4 py-8 space-y-4 border-b border-borderColor md:p-8">
                 <span className="text-indigo-600 font-medium">{item.name}</span>
                 <div className="text-gray-800 text-3xl font-semibold">
                   ${item.price}{" "}

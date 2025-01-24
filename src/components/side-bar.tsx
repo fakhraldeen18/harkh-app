@@ -46,14 +46,14 @@ export function DashboardSideBar() {
     <SidebarProvider className="w-fit">
       <Sidebar
         variant="floating"
-        className="fixed inset-y-0 left-0 z-10 flex h-full w-14 flex-col  bg-background sm:w-64"
+        className="fixed inset-y-0 left-0 z-10 flex h-full w-14 flex-col sm:w-64"
         collapsible="icon"
       >
         <SidebarHeader className="flex h-16 shrink-0 items-center border-b px-4 sm:px-6">
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="flex items-center gap-3"
+            className="flex items-center gap-3 "
           >
             <div className="h-10 w-10 rounded-full bg-blue-900 flex items-center justify-center">
               <span className="text-white text-sm font-semibold">H</span>

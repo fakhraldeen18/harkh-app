@@ -213,7 +213,7 @@ export default function LoginForm() {
               id="email"
               type="email"
               placeholder="Email"
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border rounded-lg"
             />
           </div>
           <div className="space-y-2">
@@ -223,7 +223,7 @@ export default function LoginForm() {
                 id="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 pr-10"
+                className="w-full px-4 py-2 border rounded-lg pr-10"
               />
               <Button
                 type="button"

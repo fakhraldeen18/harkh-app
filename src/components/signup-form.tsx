@@ -119,7 +119,7 @@ export default function SignupForm() {
                 id="email"
                 type="email"
                 placeholder="m@example.com"
-                className="mt-1 w-full rounded-lg border px-4 py-2 focus:ring-2 focus:ring-blue-500"
+                className="mt-1 w-full rounded-lg border px-4 py-2 "
               />
               {errors.email && (
                 <p className="text-sm text-red-400">{errors.email.message}</p>
@@ -160,7 +160,7 @@ export default function SignupForm() {
                   id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
-                  className="w-full rounded-lg border px-4 py-2 pr-10 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border px-4 py-2 pr-10 "
                 />
                 <Button
                   type="button"
@@ -200,7 +200,7 @@ export default function SignupForm() {
                   id="confirmPassword"
                   type={showConfirmPassword ? "text" : "password"}
                   placeholder="Re-enter your password"
-                  className="w-full rounded-lg border px-4 py-2 pr-10 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border px-4 py-2 pr-10"
                 />
                 <Button
                   type="button"

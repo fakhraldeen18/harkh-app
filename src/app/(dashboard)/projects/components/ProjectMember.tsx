@@ -117,7 +117,7 @@ const ProjectMember = () => {
         ))}
         <button
           onClick={() => setOpen(true)}
-          className="grid rounded-xl shadow-sm border grid-cols-[3rem_auto] items-center p-2 h-16"
+          className="grid rounded-xl shadow-sm border border-borderColor grid-cols-[3rem_auto] items-center p-2 h-16"
         >
           <div className="flex justify-center items-center rounded-full size-12 border-dashed border-2 border-[#4F4F4F]">
             <BookOpenCheck strokeWidth={1.2} />
@@ -126,7 +126,7 @@ const ProjectMember = () => {
             show all Members
           </h2>
         </button>
-        <button className="grid rounded-xl shadow-sm border grid-cols-[3rem_auto] items-center p-2 h-16">
+        <button className="grid rounded-xl shadow-sm border border-borderColor grid-cols-[3rem_auto] items-center p-2 h-16">
           <div className="flex justify-center items-center rounded-full size-12 border-dashed border-2 border-[#4F4F4F]">
             <UserRoundPlus strokeWidth={1.2} />
           </div>
@@ -149,7 +149,7 @@ const ProjectMember = () => {
             {membersInfo.map((member) => (
               <motion.div
                 variants={membersInfoWindowChiles}
-                className="border bg-card text-card-foreground shadow-sm rounded-xl grid grid-cols-[3rem_auto] items-center p-2 h-16"
+                className="border border-borderColor bg-card text-card-foreground shadow-sm rounded-xl grid grid-cols-[3rem_auto] items-center p-2 h-16"
                 key={member.memberId}
               >
                 <Image
