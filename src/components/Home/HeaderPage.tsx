@@ -1,6 +1,27 @@
+import React from "react"
+import api from "@/api"
+import { useQuery } from "@tanstack/react-query"
 const HeaderPage = () => {
+
+    const getProducts = async () => {
+      try {
+        const res = await api.get(`/experiences`)
+        return res.data
+      } catch (error) {
+        return Promise.reject(new Error("Something went wrong"))
+      }
+    }
+
+    // Queries
+    const { data: products, error } = useQuery({
+      queryKey: ["productNoneJoin"],
+      queryFn: getProducts
+    })
+    console.log("products:", products)
+
   return (
     <div className="overflow-x-hidden bg-gray-50">
+      <h1>Test</h1>
       <section className="pt-12 bg-gray-50 sm:pt-16 mb-[150px]">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">

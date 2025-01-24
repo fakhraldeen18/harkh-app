@@ -1,5 +1,5 @@
 import Features from "@/components/Home/Features"
-import FooterSection from "@/components/Home/layout/FooterSection"
+// import FooterSection from "@/components/Home/layout/FooterSection"
 import HeaderPage from "@/components/Home/HeaderPage"
 import Navbar from "@/components/Home/layout/Navbar"
 import NewsLetter from "@/components/Home/NewsLetter"
@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
       <Features />
       <Pricing />
       <NewsLetter />
-      <FooterSection />
+      {/* <FooterSection /> */}
     </div>
   )
 }
