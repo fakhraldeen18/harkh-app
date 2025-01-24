@@ -1,5 +1,4 @@
 import * as z from "zod"
-
 // Login schema
 export const loginSchema = z.object({
   email: z
@@ -11,7 +10,6 @@ export const loginSchema = z.object({
     .min(8, { message: "Password must be at least 8 characters" })
     .max(100)
 })
-
 // Signup schema
 export const signupSchema = z.object({
   name: z
@@ -40,7 +38,6 @@ export const signupSchema = z.object({
   message: "Passwords don't match",
   path: ["confirmPassword"],
 })
-
 // Types
 export type LoginInput = z.infer<typeof loginSchema>
 export type SignupInput = z.infer<typeof signupSchema>

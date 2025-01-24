@@ -1,7 +1,4 @@
-import React from 'react'
-
+import React from "react";
 export default function List() {
-  return (
-    <div>List</div>
-  )
+  return <div>List</div>;
 }

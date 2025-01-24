@@ -1,6 +1,8 @@
+import React from "react";
 const HeaderPage = () => {
   return (
     <div className="overflow-x-hidden bg-gray-50">
+      <h1>Test</h1>
       <section className="pt-12 bg-gray-50 sm:pt-16 mb-[150px]">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
@@ -14,7 +16,6 @@ const HeaderPage = () => {
                 <span className="relative">Success</span>
               </span>
             </p>
-
             <div className="px-8 sm:items-center sm:justify-center sm:px-0 sm:space-x-5 sm:flex mt-9">
               <a
                 href="#"
@@ -24,7 +25,6 @@ const HeaderPage = () => {
               >
                 Join the waitlist
               </a>
-
               <a
                 href="#"
                 title="Watch free demo"
@@ -60,7 +60,6 @@ const HeaderPage = () => {
         </div>
       </section>
     </div>
-  )
-}
-
-export default HeaderPage
+  );
+};
+export default HeaderPage;

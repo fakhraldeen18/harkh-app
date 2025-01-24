@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, type ChangeEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,12 +6,10 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
-
 import { signupSchema, type SignupInput } from "@/lib/validations/auth";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-
 export default function SignupForm() {
   // Framer Motion variants (optional; customize delay/duration)
   const containerVariants = {
@@ -23,7 +20,6 @@ export default function SignupForm() {
       transition: { delay: 0.1, duration: 0.5 },
     },
   };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -32,7 +28,6 @@ export default function SignupForm() {
       transition: { delay: 0.2, duration: 0.5 },
     },
   };
-
   // React Hook Form setup
   const {
     register,
@@ -49,23 +44,19 @@ export default function SignupForm() {
       confirmPassword: "",
     },
   });
-
   // Local states for toggling password visibility
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   // Handle input changes (optional)
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setValue(name as keyof SignupInput, value);
   };
-
   // Handle form submission
   const onSubmit = handleSubmit((data: SignupInput) => {
     console.log("signup:", data);
     // Make an API call or any post-submit logic here
   });
-
   return (
     <div className="flex min-h-screen">
       {/* Left side: Form */}
@@ -81,7 +72,6 @@ export default function SignupForm() {
           {/* <div className="mb-6 flex justify-center">
             <img src="/assets/images/logo.png" alt="Logo" className="h-14" />
           </div> */}
-
           {/* Animated heading */}
           <motion.h2
             className="text-center text-5xl font-bold text-blue-700"
@@ -89,7 +79,6 @@ export default function SignupForm() {
           >
             Sign Up
           </motion.h2>
-
           {/* Form */}
           <motion.form
             onSubmit={onSubmit}
@@ -116,7 +105,6 @@ export default function SignupForm() {
                 <p className="text-sm text-red-400">{errors.name.message}</p>
               )}
             </div> */}
-
             {/* Email */}
             <div>
               <Label
@@ -137,7 +125,6 @@ export default function SignupForm() {
                 <p className="text-sm text-red-400">{errors.email.message}</p>
               )}
             </div>
-
             {/* Phone */}
             {/* <div>
               <Label
@@ -158,7 +145,6 @@ export default function SignupForm() {
                 <p className="text-sm text-red-400">{errors.phone.message}</p>
               )}
             </div> */}
-
             {/* Password */}
             <div>
               <Label
@@ -199,7 +185,6 @@ export default function SignupForm() {
                 </p>
               )}
             </div>
-
             {/* Confirm Password */}
             <div>
               <Label
@@ -240,7 +225,6 @@ export default function SignupForm() {
                 </p>
               )}
             </div>
-
             {/* Submit Button */}
             <Button
               type="submit"
@@ -248,7 +232,6 @@ export default function SignupForm() {
             >
               Sign Up
             </Button>
-
             {/* Sign in link */}
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
@@ -260,7 +243,6 @@ export default function SignupForm() {
                 </span>
               </div>
             </div>
-
             <Button
               variant="outline"
               className="w-full border-blue-600 text-blue-600 hover:bg-blue-50"
@@ -271,7 +253,6 @@ export default function SignupForm() {
           </motion.form>
         </motion.div>
       </div>
-
       {/* Right side: Image */}
       <div className="relative hidden md:block md:w-1/2">
         <Image

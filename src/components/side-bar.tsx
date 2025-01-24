@@ -1,7 +1,5 @@
 "use client";
-
 import * as React from "react";
-
 import {
   FolderGit2,
   Home,
@@ -22,35 +20,30 @@ import {
   SidebarMenuItem,
   SidebarProvider,
 } from "@/components/ui/sidebar";
-
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-
 const recentProjects = [
   { name: "Mobile App", color: "bg-green-500" },
   { name: "Website Redesign", color: "bg-orange-500" },
   { name: "Design System", color: "bg-yellow-500" },
 ];
-
 export function DashboardSideBar() {
-    const pathname = usePathname();
-
-    const navItems = [
-      { icon: Home, label: "Home", href: "/home" },
-      { icon: User, label: "Profile", href: "/profile" },
-      { icon: KanbanSquare, label: "Kanban", href: "/kanban" },
-      { icon: List, label: "List", href: "/list" },
-      { icon: FolderGit2, label: "Project", href: "/project" },
-      { icon: Settings, label: "Setting", href: "/settings" },
-    ].map((item) => ({
-      ...item,
-      isActive: pathname === item.href,
-    }));
-
+  const pathname = usePathname();
+  const navItems = [
+    { icon: Home, label: "Home", href: "/home" },
+    { icon: User, label: "Profile", href: "/profile" },
+    { icon: KanbanSquare, label: "Kanban", href: "/kanban" },
+    { icon: List, label: "List", href: "/list" },
+    { icon: FolderGit2, label: "Projects", href: "/projects" },
+    { icon: Settings, label: "Setting", href: "/settings" },
+  ].map((item) => ({
+    ...item,
+    isActive: pathname === item.href,
+  }));
   return (
-    <SidebarProvider className="w-fit ">
+    <SidebarProvider className="w-fit">
       <Sidebar
         variant="floating"
         className="fixed inset-y-0 left-0 z-10 flex h-full w-14 flex-col  bg-background sm:w-64"
@@ -100,7 +93,6 @@ export function DashboardSideBar() {
               </motion.div>
             ))}
           </SidebarMenu>
-
           <div className="mt-8">
             <SidebarGroupLabel className="hidden px-3 text-xs font-medium text-muted-foreground mb-4 sm:block">
               RECENT PROJECTS

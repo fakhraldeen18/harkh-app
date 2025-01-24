@@ -1,8 +1,6 @@
-'use client';
-
+"use client";
 import { Button } from "@/components/ui/button";
 import { FolderIcon } from "lucide-react";
-
 export function ProjectActions() {
   return (
     <div className="flex flex-col items-center justify-center h-full max-w-md mx-auto text-center">
@@ -13,12 +11,12 @@ export function ProjectActions() {
       <p className="text-muted-foreground mb-6">
         Create your first project to get started.
       </p>
-      <Button 
-        size="lg" 
+      <Button
+        size="lg"
         className="bg-blue-600 hover:bg-blue-700"
         onClick={() => {
           // Handle new project creation
-          console.log('Creating new project...');
+          console.log("Creating new project...");
         }}
       >
         Add New Project
