@@ -3,28 +3,13 @@ import { FileCheck } from "lucide-react";
 import { Line, LineChart } from "recharts";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import React from "react";
-const SmallChart = ({
-  chartData,
-  chartConfig,
-  title,
-  count,
-}: {
-  chartData: [];
-  chartConfig: {
-    desktop: {
-      label: string;
-      color: string;
-    };
-  };
-  title: "String";
-  count: number | string;
-}) => {
+import { SmallChartTY } from "../[project-id]/page";
+const SmallChart = ({ chartData, chartConfig, title, count }: SmallChartTY) => {
   return (
     <Card className="w-full flex gap-10 justify-between items-center p-2 h-20">
       <div className="flex flex-col justify-between h-full">
