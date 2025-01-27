@@ -1,9 +1,9 @@
+import FileAttachment from "../_components/FileAttachment";
+import MultipleChart from "../_components/MultipleChart";
+import ProjectMember from "../_components/ProjectMember";
+import ProjectTask from "../_components/ProjectTask";
 import React from "react";
-import SmallChart from "../components/SmallChart";
-import MultipleChart from "../components/MultipleChart";
-import FileAttachment from "../components/FileAttachment";
-import ProjectMember from "../components/ProjectMember";
-import ProjectTask from "../components/ProjectTask";
+import SmallChart from "../_components/SmallChart";
 const page = () => {
   return (
     <div>

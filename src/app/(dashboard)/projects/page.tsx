@@ -1,15 +1,6 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import React, { useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
+import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import {
   BetweenHorizontalStart,
   CirclePlus,
@@ -28,11 +19,23 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
-import { Progress } from "@/components/ui/progress";
+import React, { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
+import NewProjectForm from "./_components/NewProjectForm";
+import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
-import NewProjectForm from "./components/NewProjectForm";
+
 const Page = () => {
   const ProjectsData: {
     id: number;
