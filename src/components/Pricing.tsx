@@ -1,101 +1,121 @@
-export default function Pricing(){
+"use client";
+import React from 'react';
+import { BsPeople, BsGear, BsCloud, BsHeadset, BsSpeedometer } from 'react-icons/bs';
+import { FaChartLine, FaCode, FaUserShield, FaInfinity } from 'react-icons/fa';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
+export default function Pricing() {
   const plans = [
-      {
-          name: "Enterprise",
-          desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          price: 32,
-          isMostPop: true,
-          features: [
-              "Curabitur faucibus",
-              "massa ut pretium maximus",
-              "Sed posuere nisi",
-              "Pellentesque eu nibh et neque",
-              "Suspendisse a leo",
-              "Praesent quis venenatis ipsum",
-              "Duis non diam vel tortor",
-          ],
-      },
-      {
-          name: "Startup",
-          desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          price: 12,
-          isMostPop: false,
-          features: [
-              "Curabitur faucibus",
-              "massa ut pretium maximus",
-              "Sed posuere nisi",
-              "Pellentesque eu nibh et neque",
-              "Suspendisse a leo",
-              "Praesent quis venenatis ipsum",
-              "Duis non diam vel tortor",
-          ],
-      },
+    {
+      name: "Premium",
+      price: { monthly: 15, annual: 150 },
+      description: "Everything you need for a growing business",
+      features: [
+        { text: "Up to 25 team members", icon: <BsPeople className="h-5 w-5" /> },
+        { text: "Advanced task management", icon: <BsGear className="h-5 w-5" /> },
+        { text: "Unlimited projects", icon: <FaInfinity className="h-5 w-5" /> },
+        { text: "25GB storage", icon: <BsCloud className="h-5 w-5" /> },
+        { text: "Advanced analytics", icon: <FaChartLine className="h-5 w-5" /> },
+        { text: "Priority support", icon: <BsHeadset className="h-5 w-5" /> },
+        { text: "Custom workflows", icon: <BsSpeedometer className="h-5 w-5" /> },
+        { text: "Team collaboration tools", icon: <FaCode className="h-5 w-5" /> },
+      ],
+      cta: "Start now",
+      highlighted: true,
+    },
+    {
+      name: "Enterprise",
+      description: "Advanced features for large organizations",
+      features: [
+        { text: "Unlimited team members", icon: <BsPeople className="h-5 w-5" /> },
+        { text: "Enterprise-grade security", icon: <FaUserShield className="h-5 w-5" /> },
+        { text: "Unlimited storage", icon: <BsCloud className="h-5 w-5" /> },
+        { text: "Custom analytics", icon: <FaChartLine className="h-5 w-5" /> },
+        { text: "24/7 priority support", icon: <BsHeadset className="h-5 w-5" /> },
+        { text: "API access", icon: <FaCode className="h-5 w-5" /> },
+        { text: "Custom integrations", icon: <BsGear className="h-5 w-5" /> },
+        { text: "Dedicated success manager", icon: <BsPeople className="h-5 w-5" /> },
+        { text: "Advanced permissions", icon: <FaUserShield className="h-5 w-5" /> },
+      ],
+      cta: "Contact us",
+      highlighted: false,
+    },
   ];
 
   return (
-      <section className='relative py-14'>
-          <div className="absolute top-0 w-full h-[521px] bg-gray-50" ></div>
-          <div className="max-w-screen-xl mx-auto text-gray-600 sm:px-4 md:px-8">
-              <div className='relative max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
-                  <h3 className="text-indigo-600 font-semibold">
-                      Pricing
-                  </h3>
-                  <p className='text-gray-800 text-3xl font-semibold sm:text-4xl'>
-                      Pay as you grow
-                  </p>
-                  <div className='max-w-xl'>
-                      <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur consequat nunc.
-                      </p>
-                  </div>
-              </div>
-              <div className='mt-16 justify-center sm:flex'>
-                  {
-                      plans.map((item, idx) => (
-                          <div key={idx} className={`relative flex-1 flex items-stretch flex-col mt-6 sm:mt-0 sm:rounded-xl sm:max-w-md ${item.isMostPop ? "bg-white shadow-lg sm:border" : ""}`}>
-                              <div className="p-4 py-8 space-y-4 border-b md:p-8">
-                                  <span className='text-indigo-600 font-medium'>
-                                      {item.name}
-                                  </span>
-                                  <div className='text-gray-800 text-3xl font-semibold'>
-                                      ${item.price} <span className="text-xl text-gray-600 font-normal">/mo</span>
-                                  </div>
-                                  <p>
-                                      {item.desc}
-                                  </p>
-                                  <button className='px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700'>
-                                      Get Started
-                                  </button>
-                              </div>
-                              <ul className='p-4 py-8 space-y-3 md:p-8'>
-                                  <li className="pb-2 text-gray-800 font-medium">
-                                      <p>Features</p>
-                                  </li>
-                                  {
-                                      item.features.map((featureItem, idx) => (
-                                          <li key={idx} className='flex items-center gap-5'>
-                                              <svg
-                                                  xmlns='http://www.w3.org/2000/svg'
-                                                  className='h-5 w-5 text-indigo-600'
-                                                  viewBox='0 0 20 20'
-                                                  fill='currentColor'>
-                                                  <path
-                                                      fillRule='evenodd'
-                                                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                                                      clipRule='evenodd'></path>
-                                              </svg>
-                                              {featureItem}
-                                          </li>
-                                      ))
-                                  }
-                              </ul>
-                          </div>
-                      ))
-                  }
-              </div>
-          </div>
-      </section>
-      
+    <section className="py-24 bg-white" id="pricing">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-base font-semibold leading-7 text-primary-600">Pricing</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            The right price for your needs
+          </p>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            Choose the perfect plan for your team size and requirements
+          </p>
+        </div>
+
+        <div className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2">
+          {plans.map((plan) => (
+            <Card
+              key={plan.name}
+              className={cn(
+                "rounded-3xl border-0",
+                plan.highlighted ? 'ring-2 ring-primary-600' : 'ring-1 ring-gray-200'
+              )}
+            >
+              <CardHeader className="p-8 xl:p-10">
+                <div className="flex items-center justify-between gap-x-4">
+                  <CardTitle className="text-lg font-semibold leading-8 text-gray-900">
+                    {plan.name}
+                  </CardTitle>
+                  {plan.highlighted && (
+                    <p className="rounded-full bg-primary-600/10 px-2.5 py-1 text-xs font-semibold leading-5 text-primary-600">
+                      Most popular
+                    </p>
+                  )}
+                </div>
+                <CardDescription className="mt-4 text-sm leading-6 text-gray-600">
+                  {plan.description}
+                </CardDescription>
+                <div className="mt-6 flex items-baseline gap-x-1">
+                  <span className="text-4xl font-bold tracking-tight text-gray-900">
+                    {plan.price?.monthly ? `$${plan.price.monthly}` : 'Custom pricing'}
+                  </span>
+                  {plan.price?.monthly && (
+                    <span className="text-sm font-semibold leading-6 text-gray-600">
+                      /month
+                    </span>
+                  )}
+                </div>
+              </CardHeader>
+              <CardContent className="p-8 xl:p-10 pt-0">
+                <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600">
+                  {plan.features.map((feature) => (
+                    <li key={feature.text} className="flex gap-x-3 items-center">
+                      <span className="text-primary-600 flex-shrink-0">
+                        {feature.icon}
+                      </span>
+                      {feature.text}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8">
+                  <Button
+                    className="w-full"
+                    variant={plan.highlighted ? "default" : "outline"}
+                    size="lg"
+                  >
+                    {plan.highlighted ? 'Get started' : 'Contact us'}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

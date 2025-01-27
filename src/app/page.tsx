@@ -18,7 +18,7 @@ export default function Home() {
         <Features />
         
         <Pricing />
-        <NewsLetter />
+        {/* <NewsLetter /> */}
       <Footer logoUrl={logoUrl} />
       </div>
   );

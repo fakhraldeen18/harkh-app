@@ -1,38 +1,36 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Logo from "../../public/assets/images/Harkh.png";
-import { Button } from "@/components/ui/button";
-import { User } from "lucide-react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import Login from "../app/(auth)/login/page";
-import Register from "../app/(auth)/signup/page";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect } from "react"
+import Logo from "@/assets/images/Harkh.png"
+import { Button } from "@/components/ui/button"
+import { User } from "lucide-react"
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import Login from "../../app/(auth)/login/page"
+import Register from "../../app/(auth)/signup/page"
 
 const Navbar = () => {
-  const [expanded, setExpanded] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [showAuthDialog, setShowAuthDialog] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
-  const router = useRouter();
+  const [expanded, setExpanded] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [showAuthDialog, setShowAuthDialog] = useState(false)
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login')
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      setIsScrolled(window.scrollY > 0)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const navItems = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "/" },
     { name: "Features", href: "#features" },
     { name: "Pricing", href: "#pricing" },
-  ];
+  ]
 
   const handleAuth = (mode: 'login' | 'register') => {
-    setAuthMode(mode);
-    setShowAuthDialog(true);
-  };
+    setAuthMode(mode)
+    setShowAuthDialog(true)
+  }
 
   return (
     <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background shadow-md py-1" : "bg-transparent py-2"}`}>
@@ -171,7 +169,7 @@ const Navbar = () => {
         )}
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

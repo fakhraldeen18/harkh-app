@@ -1,3 +1,4 @@
+"use client"; 
 import  SignUpForm  from "@/components/signup-form";
 import { WaveBackground } from "@/components/wave-background";
 

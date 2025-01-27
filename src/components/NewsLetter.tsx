@@ -1,3 +1,5 @@
+"use client";
+
 export default function NewsLetter() {
   return (
     <section className="py-28 relative">
@@ -7,7 +9,7 @@ export default function NewsLetter() {
         </div>
         <div className="flex-1 mt-6 md:mt-0">
           <form
-            // onSubmit={(e) => e.preventDefault()}
+            onSubmit={(e) => e.preventDefault()}
             className="flex items-center gap-x-3 md:justify-end"
           >
             <div className="relative">
