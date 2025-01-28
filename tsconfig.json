@@ -22,6 +22,14 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/[nav-bar.tsx]", "src/app/(dashboard)/projects/components/SmallChart.tsx", "src/app/(dashboard)/projects/page.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/components/[nav-bar.tsx]",
+    "src/app/(dashboard)/projects/_components/SmallChart.tsx",
+    "src/app/(dashboard)/projects/page.jsx"
+  ],
   "exclude": ["node_modules"]
 }
