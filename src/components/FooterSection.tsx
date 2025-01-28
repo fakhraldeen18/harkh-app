@@ -2,19 +2,14 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-
-interface FooterProps {
-  logoUrl: string;
-}
-
-export function Footer({ logoUrl }: FooterProps) {
+export function Footer() {
   return (
     <footer className="border-t">
       <div className="container px-4 py-8 mx-auto">
-        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="flex items-center space-x-4">
             <Image
-              src={logoUrl}
+              src="/assets/images/Harkh.png"
               alt="Harkh Logo"
               width={130}
               height={130}
@@ -22,7 +17,7 @@ export function Footer({ logoUrl }: FooterProps) {
             />
             <span className="text-2xl font-bold">Harkh</span>
           </div>
-          <nav className="flex gap-4 flex-wrap">
+          <nav className="flex sm:gap-4">
             <Button variant="link" asChild>
               <Link href="#">About</Link>
             </Button>

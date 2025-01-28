@@ -3,7 +3,7 @@
 export default function NewsLetter() {
   return (
     <section className="py-28 relative">
-      <div className="relative z-10 max-w-screen-xl mx-auto px-4 justify-between items-center gap-12 md:px-8 md:flex">
+      <div className="relative z-10 max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center md:gap-12 md:px-8">
         <div className="flex-1 max-w-lg">
           <h3 className="text-3xl font-bold">Join the waitlist today!</h3>
         </div>
@@ -44,9 +44,9 @@ export default function NewsLetter() {
         className="absolute inset-0 w-full h-full"
         style={{
           background:
-            "linear-gradient(137.92deg, rgba(192, 132, 252, 0) 20.43%, rgba(232, 121, 249, 0.26) 49.66%, rgba(204, 171, 238, 0) 92.38%)"
+            "linear-gradient(137.92deg, rgba(192, 132, 252, 0) 20.43%, rgba(232, 121, 249, 0.26) 49.66%, rgba(204, 171, 238, 0) 92.38%)",
         }}
       ></div>
     </section>
-  )
+  );
 }

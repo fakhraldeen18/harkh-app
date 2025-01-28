@@ -1,19 +1,12 @@
-"use client"; 
-import  SignUpForm  from "@/components/signup-form";
+import SignUpForm from "@/components/signup-form";
 import { WaveBackground } from "@/components/wave-background";
-
 // import { ChangeEvent, FormEvent, useState } from "react";
-
-
 // import { z } from "zod";
-
 // import { zodResolver } from "@hookform/resolvers/zod";
 // import { Link, useNavigate } from "react-router-dom";
 // import { SubmitHandler, useForm } from "react-hook-form";
-
 export default function Signup() {
   // type SignUpSchemaType = z.infer<typeof SignUpSchema>;
-
   // const navigate = useNavigate();
   // const [user, setUser] = useState({
   //   name: "",
@@ -26,7 +19,6 @@ export default function Signup() {
   //   console.log("user:", user);
   //   navigate("/login");
   // };
-
   // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
   //   const { name, value } = e.target;
   //   setUser({
@@ -34,7 +26,6 @@ export default function Signup() {
   //     [name]: value,
   //   });
   // };
-
   // const SignUpSchema = z
   //   .object({
   //     name: z.string().min(3).max(30),
@@ -55,19 +46,16 @@ export default function Signup() {
   //     message: "Passwords do not match",
   //     path: ["confirmPassword"], // path of error
   //   });
-
   // const {
   //   register,
   //   handleSubmit,
   //   formState: { errors },
   // } = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
   // console.log(errors.email?.message);
-
   //we should here call like API or something...
   // const onSubmit: SubmitHandler<SignUpSchemaType> = (data: any) => {
   //   console.log(data);
   // };
-
   return (
     <div className="">
       <SignUpForm />

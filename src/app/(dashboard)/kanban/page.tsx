@@ -1,7 +1,4 @@
-import React from 'react'
-
+import React from "react";
 export default function Kanban() {
-  return (
-    <div>Home</div>
-  )
+  return <div>Home</div>;
 }

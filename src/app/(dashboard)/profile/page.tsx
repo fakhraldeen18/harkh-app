@@ -1,9 +1,4 @@
-import React from 'react'
-import ProfilePage from '@/components/profile-page'
-
+import React from "react";
 export default function Profile() {
-  return (
-    <ProfilePage />
-    
-  )
+  return <div>profile</div>;
 }
