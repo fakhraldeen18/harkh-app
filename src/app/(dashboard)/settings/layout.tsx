@@ -59,7 +59,7 @@ export default function SettingsLayout({
   const isHomePage = pathname === "/settings"
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen ">
       <div className="container mx-auto py-8 px-4">
         <div className="mb-8 bg-white rounded-lg p-6 shadow-sm">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
