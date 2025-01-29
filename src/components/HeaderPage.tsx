@@ -58,7 +58,7 @@ const HeaderPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

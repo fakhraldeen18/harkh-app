@@ -1,18 +1,14 @@
 // 'use client'
-
 // import { useState, type ChangeEvent, type FormEvent } from 'react'
 // import Link from 'next/link'
 // import { Eye, EyeOff, ArrowRight } from 'lucide-react'
-
 // import { useForm } from 'react-hook-form'
 // import { zodResolver } from '@hookform/resolvers/zod'
 // import { loginSchema, type LoginInput } from '@/lib/validations/auth'
-
 // import { Button } from '@/components/ui/button'
 // import { Label } from '@/components/ui/label'
 // import { Input } from '@/components/ui/input'
 // import Image from 'next/image'
-
 // export function LoginForm() {
 //   const form = useForm<LoginInput>({
 //     resolver: zodResolver(loginSchema),
@@ -22,16 +18,13 @@
 //     },
 //   })
 //   const [showPassword, setShowPassword] = useState(false)
-
 //   const handleSubmit = form.handleSubmit((data: LoginInput) => {
 //     console.log('login:', data)
 //   })
-
 //   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 //     const { name, value } = e.target
 //     form.setValue(name, value)
 //   }
-
 //   return (
 //     <div className="flex min-h-screen">
 //       {/* Left side: Form */}
@@ -44,9 +37,7 @@
 //             className="h-14"
 //           />
 //         </div> */}
-
 //         <h2 className="mb-6 text-3xl font-bold text-gray-800">Sign in</h2>
-
 //         <form onSubmit={handleSubmit} className="space-y-6">
 //           <div>
 //             <Label htmlFor="email" className="text-sm font-medium text-gray-700">
@@ -62,7 +53,6 @@
 //               className="mt-1 w-full"
 //             />
 //           </div>
-
 //           <div>
 //             <Label htmlFor="password" className="text-sm font-medium text-gray-700">
 //               Password
@@ -91,7 +81,6 @@
 //               </Button>
 //             </div>
 //           </div>
-
 //           {/* "Keep me logged in" checkbox (optional) */}
 //           <div className="flex items-center">
 //             <Input
@@ -106,7 +95,6 @@
 //               Keep me logged in
 //             </Label>
 //           </div>
-
 //           {/* Sign in button */}
 //           <Button
 //             type="submit"
@@ -115,7 +103,6 @@
 //             Sign in
 //             <ArrowRight className="ml-2 h-4 w-4" />
 //           </Button>
-
 //           {/* Sign up link */}
 //           <p className="text-center text-sm text-gray-600">
 //             Don’t have an account?{' '}
@@ -125,18 +112,17 @@
 //           </p>
 //         </form>
 //       </div>
-
 //       {/* Right side: Image */}
 //       <div className="hidden md:block md:w-1/2">
 //         {/* If you have a local image, you might do something like: */}
-//         <Image 
-//              src="/assets/images/laptop.png" 
+//         <Image
+//              src="/assets/images/laptop.png"
 //              alt="Laptop on desk with coffee"
 //           //  fill
 //           width={400}
 //           height={400}
 //              className=""
-//            /> 
+//            />
 //            {/* or a plain <img> tag if you prefer: */}
 //         {/* <Image
 //           src="/assets/images/laptop.png"
@@ -148,23 +134,19 @@
 //     </div>
 //   )
 // }
-'use client'
-
-import { useState, type ChangeEvent } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { Eye, EyeOff, ArrowRight } from 'lucide-react'
-
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { loginSchema, type LoginInput } from '@/lib/validations/auth'
-
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
-import { Checkbox } from './ui/checkbox'
-
+"use client";
+import { useState, type ChangeEvent } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Eye, EyeOff, ArrowRight } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema, type LoginInput } from "@/lib/validations/auth";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "./ui/checkbox";
 export default function LoginForm() {
   // Framer Motion variants
   const containerVariants = {
@@ -200,10 +182,9 @@ export default function LoginForm() {
   });
   // Handle input changes (optional)
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    form.setValue(name, value)
-  }
-
+    const { name, value } = e.target;
+    form.setValue(name, value);
+  };
   return (
     <div className="flex min-h-screen  ">
       {/* Left side: Animated Form */}

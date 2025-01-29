@@ -1,66 +1,75 @@
-"use client"
-import React from 'react';
-import { FaUsers, FaChartLine } from "react-icons/fa";
-import { HiSparkles } from "react-icons/hi";
-
-const features = [
-  {
-    name: 'AI-Powered Assistance',
-    description:
-      'Leverage artificial intelligence to automate tasks, get smart suggestions, and enhance your workflow.',
-    icon: <HiSparkles className="h-4 w-4 text-indigo-500" />,
-    color: 'bg-indigo-50',
-  },
-  {
-    name: 'Team collaboration',
-    description:
-      'Work seamlessly with your team members, share resources, and communicate effectively in real-time.',
-    icon: <FaUsers className="h-4 w-4 text-emerald-500" />,
-    color: 'bg-emerald-50',
-  },
-  {
-    name: 'Insightful analytics',
-    description:
-      'Make data-driven decisions with comprehensive analytics and reporting features.',
-    icon: <FaChartLine className="h-4 w-4 text-rose-500" />,
-    color: 'bg-rose-50',
-  },
-];
+import React from 'react'
+import { BsRocketTakeoff } from "react-icons/bs";
+import { FaXmarksLines } from "react-icons/fa6";
+import { MdOutlineTimeline } from "react-icons/md";
 
 const Features = () => {
   return (
-    <section className="py-24 bg-white" id="features">
-      <div className="container px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="text-base font-semibold leading-7 text-primary-600">Features</h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Everything you need to manage your projects
+    <section className="py-12 bg-gray-50 container">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold">Master Every Project with Precision</h2>
+        <p className="text-gray-500 mt-4">
+          Harkh empowers teams to overcome project challenges by using AI to manage resources,
+          prevent scope creep, and meet deadlines—ensuring every idea turns into a successful project.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+        <div className="flex flex-col items-center">
+          <div className="p-4 bg-gray-200 rounded-full mb-4">
+            {/* Icon for "Check our team" */}
+            <BsRocketTakeoff className='w-8 h-8 text-gray-800' />
+
+          </div>
+          <h3 className="text-lg font-semibold">AI-Powered Resource Management</h3>
+          <p className="text-gray-600 mt-2">
+            Optimize your team’s productivity by assigning the right tasks to the right members at the right time using AI-driven insights.
           </p>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            Harness the power of AI to streamline your project management workflow
-          </p>
+          <a
+            href="#"
+            className="mt-4 inline-block text-sm font-medium text-gray-800 hover:text-gray-900"
+          >
+            READ MORE →
+          </a>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 mt-16 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
-            <div key={feature.name} className="relative group">
-              <div className="relative p-6 bg-white border border-gray-200 rounded-lg hover:shadow-lg transition duration-200">
-                <div className={`flex items-center justify-center w-10 h-10 mb-4 ${feature.color} rounded-lg`}>
-                  {feature.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {feature.name}
-                </h3>
-                <p className="text-gray-600">
-                  {feature.description}
-                </p>
-              </div>
-            </div>
-          ))}
+        <div className="flex flex-col items-center">
+          <div className="p-4 bg-gray-200 rounded-full mb-4">
+            {/* Icon for "Support 24/7" */}
+            <FaXmarksLines className='w-8 h-8 text-gray-800' />
+
+          </div>
+          <h3 className="text-lg font-semibold">Intelligent Scope Tracking</h3>
+          <p className="text-gray-600 mt-2">
+            Stay within budget and avoid project scope creep with real-time tracking and early warnings powered by advanced algorithms.
+          </p>
+          <a
+            href="#"
+            className="mt-4 inline-block text-sm font-medium text-gray-800 hover:text-gray-900"
+          >
+            READ MORE →
+          </a>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <div className="p-4 bg-gray-200 rounded-full mb-4">
+            {/* Icon for "Unlimited revisions" */}
+            <MdOutlineTimeline className='w-8 h-8 text-gray-800' />
+          </div>
+          <h3 className="text-lg font-semibold">Deadline Optimization</h3>
+          <p className="text-gray-600 mt-2">
+            Meet deadlines efficiently with AI that sets realistic timelines, dynamically adapting to your resources and team experience.
+          </p>
+          <a
+            href="#"
+            className="mt-4 inline-block text-sm font-medium text-gray-800 hover:text-gray-900"
+          >
+            READ MORE →
+          </a>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Features;
+export default Features

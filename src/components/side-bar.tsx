@@ -37,6 +37,7 @@ export function DashboardSideBar() {
     { icon: KanbanSquare, label: "Kanban", href: "/kanban" },
     { icon: List, label: "List", href: "/list" },
     { icon: FolderGit2, label: "Projects", href: "/projects" },
+    { icon: User, label: "Members", href: "/members" },
     { icon: Settings, label: "Setting", href: "/settings" },
   ].map((item) => ({
     ...item,

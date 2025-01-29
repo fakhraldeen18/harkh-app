@@ -3,7 +3,7 @@ import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardDescription } from "@/components/ui/card"
 
-export default function SettingsPage() {
+export default function SettingsDashboard() {
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-8">
       {/* Profile Progress Section */}
@@ -15,7 +15,7 @@ export default function SettingsPage() {
               Complete your profile to explore opportunities and unleash your full potential
             </p>
           </div>
-          <Button >Complete your profile</Button>
+          <Button>Complete your profile</Button>
         </div>
         <Progress value={45} className="h-2" />
       </div>
