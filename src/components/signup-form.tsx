@@ -1,16 +1,19 @@
 "use client";
-import { useState, type ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
+import api from "@/api";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
-import { signupSchema, type SignupInput } from "@/lib/validations/auth";
+import { SignUpSchemaType, SignUpSchema } from "@/lib/validations/auth";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 export default function SignupForm() {
+  const router = useRouter();
   // Framer Motion variants (optional; customize delay/duration)
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -28,35 +31,50 @@ export default function SignupForm() {
       transition: { delay: 0.2, duration: 0.5 },
     },
   };
+
   // React Hook Form setup
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
-  } = useForm<SignupInput>({
-    resolver: zodResolver(signupSchema),
-    defaultValues: {
-      // name: "",
-      email: "",
-      // phone: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
+  } = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
+
   // Local states for toggling password visibility
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
   // Handle input changes (optional)
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setValue(name as keyof SignupInput, value);
+    setUser({
+      ...user,
+      [name]: value,
+    });
   };
+
   // Handle form submission
-  const onSubmit = handleSubmit((data: SignupInput) => {
-    console.log("signup:", data);
-    // Make an API call or any post-submit logic here
-  });
+  const handleSignUp = async () => {
+    try {
+      const res = await api.post("/users/signup", user);
+      return res.data;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return Promise.reject(new Error("Something went wrong"));
+    }
+  };
+
+  const onSubmit: SubmitHandler<SignUpSchemaType> = async () => {
+    const response = await handleSignUp();
+    if (response) {
+      router.push("/login");
+    }
+  };
+
   return (
     <div className="flex min-h-screen">
       {/* Left side: Form */}
@@ -81,30 +99,10 @@ export default function SignupForm() {
           </motion.h2>
           {/* Form */}
           <motion.form
-            onSubmit={onSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             className="space-y-6"
             variants={itemVariants}
           >
-            {/* Name */}
-            {/* <div>
-              <Label
-                htmlFor="name"
-                className="text-sm font-medium text-gray-700"
-              >
-                Full Name
-              </Label>
-              <Input
-                {...register("name")}
-                onChange={handleChange}
-                id="name"
-                type="text"
-                placeholder="John Doe"
-                className="mt-1 w-full rounded-lg border px-4 py-2 focus:ring-2 focus:ring-blue-500"
-              />
-              {errors.name && (
-                <p className="text-sm text-red-400">{errors.name.message}</p>
-              )}
-            </div> */}
             {/* Email */}
             <div>
               <Label
@@ -114,37 +112,18 @@ export default function SignupForm() {
                 Email
               </Label>
               <Input
-                {...register("email")}
-                onChange={handleChange}
                 id="email"
                 type="email"
                 placeholder="m@example.com"
+                {...register("email")}
+                onChange={handleChange}
                 className="mt-1 w-full rounded-lg border px-4 py-2 focus:ring-2 focus:ring-blue-500"
               />
               {errors.email && (
-                <p className="text-sm text-red-400">{errors.email.message}</p>
+                <span className="text-red-600">{errors.email.message}</span>
               )}
             </div>
-            {/* Phone */}
-            {/* <div>
-              <Label
-                htmlFor="phone"
-                className="text-sm font-medium text-gray-700"
-              >
-                Phone Number
-              </Label>
-              <Input
-                {...register("phone")}
-                onChange={handleChange}
-                id="phone"
-                type="tel"
-                placeholder="966501234567"
-                className="mt-1 w-full rounded-lg border px-4 py-2 focus:ring-2 focus:ring-blue-500"
-              />
-              {errors.phone && (
-                <p className="text-sm text-red-400">{errors.phone.message}</p>
-              )}
-            </div> */}
+
             {/* Password */}
             <div>
               <Label
@@ -155,11 +134,11 @@ export default function SignupForm() {
               </Label>
               <div className="relative mt-1">
                 <Input
-                  {...register("password")}
-                  onChange={handleChange}
                   id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
+                  {...register("password")}
+                  onChange={handleChange}
                   className="w-full rounded-lg border px-4 py-2 pr-10 focus:ring-2 focus:ring-blue-500"
                 />
                 <Button
@@ -180,9 +159,7 @@ export default function SignupForm() {
                 </Button>
               </div>
               {errors.password && (
-                <p className="text-sm text-red-400">
-                  {errors.password.message}
-                </p>
+                <span className="text-red-600">{errors.password.message}</span>
               )}
             </div>
             {/* Confirm Password */}
@@ -195,11 +172,10 @@ export default function SignupForm() {
               </Label>
               <div className="relative mt-1">
                 <Input
-                  {...register("confirmPassword")}
-                  onChange={handleChange}
                   id="confirmPassword"
                   type={showConfirmPassword ? "text" : "password"}
                   placeholder="Re-enter your password"
+                  {...register("confirmPassword")}
                   className="w-full rounded-lg border px-4 py-2 pr-10 focus:ring-2 focus:ring-blue-500"
                 />
                 <Button
@@ -220,9 +196,9 @@ export default function SignupForm() {
                 </Button>
               </div>
               {errors.confirmPassword && (
-                <p className="text-sm text-red-400">
+                <span className="text-red-600">
                   {errors.confirmPassword.message}
-                </p>
+                </span>
               )}
             </div>
             {/* Submit Button */}

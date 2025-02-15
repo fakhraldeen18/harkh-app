@@ -1,153 +1,22 @@
-// 'use client'
-// import { useState, type ChangeEvent, type FormEvent } from 'react'
-// import Link from 'next/link'
-// import { Eye, EyeOff, ArrowRight } from 'lucide-react'
-// import { useForm } from 'react-hook-form'
-// import { zodResolver } from '@hookform/resolvers/zod'
-// import { loginSchema, type LoginInput } from '@/lib/validations/auth'
-// import { Button } from '@/components/ui/button'
-// import { Label } from '@/components/ui/label'
-// import { Input } from '@/components/ui/input'
-// import Image from 'next/image'
-// export function LoginForm() {
-//   const form = useForm<LoginInput>({
-//     resolver: zodResolver(loginSchema),
-//     defaultValues: {
-//       email: '',
-//       password: '',
-//     },
-//   })
-//   const [showPassword, setShowPassword] = useState(false)
-//   const handleSubmit = form.handleSubmit((data: LoginInput) => {
-//     console.log('login:', data)
-//   })
-//   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target
-//     form.setValue(name, value)
-//   }
-//   return (
-//     <div className="flex min-h-screen">
-//       {/* Left side: Form */}
-//       <div className="flex w-full flex-col justify-center px-8 py-12 md:w-1/2 md:px-16 bg-white">
-//         {/* You can optionally add your logo here */}
-//         {/* <div className="mb-8 flex justify-center">
-//           <img
-//             src="/assets/images/logo.png"
-//             alt="HRAKH Logo"
-//             className="h-14"
-//           />
-//         </div> */}
-//         <h2 className="mb-6 text-3xl font-bold text-gray-800">Sign in</h2>
-//         <form onSubmit={handleSubmit} className="space-y-6">
-//           <div>
-//             <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-//               Email
-//             </Label>
-//             <Input
-//               {...form.register('email')}
-//               id="email"
-//               type="email"
-//               placeholder="m@example.com"
-//               required
-//               onChange={handleChange}
-//               className="mt-1 w-full"
-//             />
-//           </div>
-//           <div>
-//             <Label htmlFor="password" className="text-sm font-medium text-gray-700">
-//               Password
-//             </Label>
-//             <div className="relative mt-1">
-//               <Input
-//                 {...form.register('password')}
-//                 id="password"
-//                 type={showPassword ? 'text' : 'password'}
-//                 placeholder="Enter your password"
-//                 required
-//                 onChange={handleChange}
-//                 className="w-full pr-10"
-//               />
-//               <Button
-//                 type="button"
-//                 variant="ghost"
-//                 size="icon"
-//                 className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:bg-transparent"
-//                 onClick={() => setShowPassword(!showPassword)}
-//               >
-//                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-//                 <span className="sr-only">
-//                   {showPassword ? 'Hide password' : 'Show password'}
-//                 </span>
-//               </Button>
-//             </div>
-//           </div>
-//           {/* "Keep me logged in" checkbox (optional) */}
-//           <div className="flex items-center">
-//             <Input
-//               id="remember"
-//               type="checkbox"
-//               className="h-4 w-4 rounded border-gray-300"
-//             />
-//             <Label
-//               htmlFor="remember"
-//               className="ml-2 text-sm text-gray-700 cursor-pointer"
-//             >
-//               Keep me logged in
-//             </Label>
-//           </div>
-//           {/* Sign in button */}
-//           <Button
-//             type="submit"
-//             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium"
-//           >
-//             Sign in
-//             <ArrowRight className="ml-2 h-4 w-4" />
-//           </Button>
-//           {/* Sign up link */}
-//           <p className="text-center text-sm text-gray-600">
-//             Don’t have an account?{' '}
-//             <Link href="/signup" className="font-medium text-blue-600 hover:underline">
-//               Sign up
-//             </Link>
-//           </p>
-//         </form>
-//       </div>
-//       {/* Right side: Image */}
-//       <div className="hidden md:block md:w-1/2">
-//         {/* If you have a local image, you might do something like: */}
-//         <Image
-//              src="/assets/images/laptop.png"
-//              alt="Laptop on desk with coffee"
-//           //  fill
-//           width={400}
-//           height={400}
-//              className=""
-//            />
-//            {/* or a plain <img> tag if you prefer: */}
-//         {/* <Image
-//           src="/assets/images/laptop.png"
-//           alt="Laptop on desk with coffee"
-//           // className="object-cover"
-//           fill
-//         /> */}
-//       </div>
-//     </div>
-//   )
-// }
 "use client";
-import { useState, type ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Eye, EyeOff, ArrowRight } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { Eye, EyeOff } from "lucide-react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, type LoginInput } from "@/lib/validations/auth";
+import { LogInSchema, type LogInUpSchemaType } from "@/lib/validations/auth";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { jwtDecode } from "jwt-decode";
 import { Checkbox } from "./ui/checkbox";
+import api from "@/api";
+import { decodeUser } from "@/lib/utils";
 export default function LoginForm() {
+  const router = useRouter();
   // Framer Motion variants
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -165,26 +34,58 @@ export default function LoginForm() {
       transition: { delay: 0.2, duration: 0.5 },
     },
   };
-  // React Hook Form setup
-  const form = useForm<LoginInput>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
+
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
   });
+  const [loginError, setLoginError] = useState("");
+
+  const handleLogIn = async () => {
+    try {
+      const res = await api.post("/users/login", login);
+      return res.data;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return Promise.reject(setLoginError("email or password is invalid"));
+    }
+  };
+
+  // React Hook Form setup
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LogInUpSchemaType>({ resolver: zodResolver(LogInSchema) });
+
   // Local state for toggling password visibility
   const [showPassword, setShowPassword] = useState(false);
+
   // Handle form submission
-  const handleSubmit = form.handleSubmit((data: LoginInput) => {
-    console.log("login:", data);
-    // You can make an API call or do any post-submit logic here
-  });
-  // Handle input changes (optional)
+  const onSubmit: SubmitHandler<LogInUpSchemaType> = async () => {
+    const token = await handleLogIn();
+    if (token) {
+      localStorage.setItem("token", token);
+      const decode = jwtDecode(token);
+      const decodedUserToken = decodeUser(decode);
+      localStorage.setItem(
+        "decodedUserToken",
+        JSON.stringify(decodedUserToken)
+      );
+      console.log(decodedUserToken);
+      setLoginError("");
+      router.push("/kanban");
+    }
+  };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    form.setValue(name, value);
+    setLogin({
+      ...login,
+      [name]: value,
+    });
   };
+
   return (
     <div className="flex min-h-screen  ">
       {/* Left side: Animated Form */}
@@ -203,45 +104,56 @@ export default function LoginForm() {
         <motion.form
           className="space-y-6"
           variants={itemVariants}
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input
-              {...form.register("email")}
+              {...register("email")}
               onChange={handleChange}
               id="email"
+              name="email"
               type="email"
               placeholder="Email"
               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
+
+            {errors.email && (
+              <span className="text-red-600">{errors.email.message}</span>
+            )}
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
             <div className="relative">
               <Input
                 id="password"
+                {...register("password")}
+                name="password"
+                onChange={handleChange}
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 pr-10"
-              />
+              />{" "}
               <Button
                 type="button"
                 variant="ghost"
                 size="icon"
-                className="absolute right-2 top-1/2 -translate-y-1/2"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:bg-transparent"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
-                  <EyeOff className="h-4 w-4 text-gray-500" />
+                  <EyeOff className="h-4 w-4" />
                 ) : (
-                  <Eye className="h-4 w-4 text-gray-500" />
+                  <Eye className="h-4 w-4" />
                 )}
                 <span className="sr-only">
                   {showPassword ? "Hide password" : "Show password"}
                 </span>
               </Button>
             </div>
+            {errors.password && (
+              <span className="text-red-600">{errors.password.message}</span>
+            )}
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox id="remember" />
@@ -255,6 +167,9 @@ export default function LoginForm() {
           >
             Sign in
           </Button>
+          {loginError && (
+            <span className="text-red-600 text-center">{loginError}</span>
+          )}
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-300" />
