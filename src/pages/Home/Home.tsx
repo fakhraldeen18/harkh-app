@@ -1,9 +1,10 @@
-import Features from "@/components/Home/Features"
 // import FooterSection from "@/components/Home/layout/FooterSection"
-import HeaderPage from "@/components/Home/HeaderPage"
-import Navbar from "@/components/Home/layout/Navbar"
-import NewsLetter from "@/components/Home/NewsLetter"
-import Pricing from "@/components/Home/Pricing"
+import Features from "@/components/Features"
+import HeaderPage from "@/components/HeaderPage"
+import Navbar from "@/components/Navbar"
+import NewsLetter from "@/components/NewsLetter"
+import Pricing from "@/components/Pricing"
+
 import React from "react"
 
 const HomePage: React.FC = () => {

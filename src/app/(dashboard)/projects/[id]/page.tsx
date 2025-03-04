@@ -4,7 +4,9 @@ import ProjectMember from "../_components/ProjectMember";
 import ProjectTask from "../_components/ProjectTask";
 import React from "react";
 import SmallChart from "../_components/SmallChart";
-const page = () => {
+const page = ({ params }: { params: { id: string } }) => {
+  const { id } = params;
+  console.log("id:", id);
   return (
     <div>
       <div className="grid gap-4 grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
@@ -83,7 +85,7 @@ const page = () => {
       </div>
       <div className="grid gap-6 grid-cols-[auto_auto] max-xl:grid-cols-1 my-6">
         <MultipleChart />
-        <FileAttachment />
+        <FileAttachment id={id} />
         <ProjectMember />
         <ProjectTask />
       </div>
