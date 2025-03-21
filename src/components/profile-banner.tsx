@@ -1,7 +1,13 @@
+"use client";
+import { GlobalContext } from "@/app/(context)/globalProvider";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useContext } from "react";
 
 export default function ProfileBanner() {
+  const context = useContext(GlobalContext);
+  if (!context) throw Error("Context is missing");
+  const { state } = context;
   return (
     <div className="mb-6 overflow-hidden w-[94%] mx-auto mt-8 rounded-xl  shadow col-span-3">
       <div className="relative h-48 bg-gray-100">
@@ -22,7 +28,7 @@ export default function ProfileBanner() {
             height={120}
           />
           <div className=" relative z-20 top-10">
-            <h2 className="text-2xl font-bold">Husam Alzain</h2>
+            <h2 className="text-2xl font-bold">{state.user?.emailaddress}</h2>
             <p className="text-gray-500">UI/UX Designer</p>
           </div>
         </div>

@@ -66,12 +66,17 @@ export default function LoginForm() {
     const token = await handleLogIn();
     if (token) {
       localStorage.setItem("token", token);
+      document.cookie = `token=${token}; path=/; max-age=3600`;
       const decode = jwtDecode(token);
       const decodedUserToken = decodeUser(decode);
       localStorage.setItem(
         "decodedUserToken",
         JSON.stringify(decodedUserToken)
       );
+      document.cookie = `decodedUserToken=${JSON.stringify(
+        decodedUserToken
+      )}; path=/; max-age=3600`;
+
       console.log(decodedUserToken);
       setLoginError("");
       router.push("/kanban");

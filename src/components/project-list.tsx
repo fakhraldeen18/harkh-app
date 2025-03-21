@@ -42,10 +42,6 @@ const projects = [
 ];
 
 export function ProjectsList() {
-
- 
-  
-
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -108,11 +104,7 @@ export function ProjectsList() {
           whileHover={{ scale: 1.02 }}
           className="rounded-2xl border-2  flex items-center justify-center h-[250px] bg-gray-50"
         >
-          <div
-           
-            className="flex flex-col items-center gap-2 text-blue-600"
-          >
-          
+          <div className="flex flex-col items-center gap-2 text-blue-600">
             <div className="p-2 rounded-full bg-blue-50">
               <Plus className="w-6 h-6" />
             </div>

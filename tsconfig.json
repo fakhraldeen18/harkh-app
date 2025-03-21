@@ -29,7 +29,8 @@
     ".next/types/**/*.ts",
     "src/components/[nav-bar.tsx]",
     "src/app/(dashboard)/projects/_components/SmallChart.tsx",
-    "src/app/(dashboard)/projects/page.jsx"
+    "src/app/(dashboard)/projects/page.jsx",
+    "src/middleware.ts"
   ],
   "exclude": ["node_modules"]
 }
